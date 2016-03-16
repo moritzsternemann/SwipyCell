@@ -1,0 +1,385 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8EB860BA1C98666B00DB393C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB860B11C98666B00DB393C /* AppDelegate.swift */; };
+		8EB860BF1C98666B00DB393C /* SwipyCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB860B91C98666B00DB393C /* SwipyCellViewController.swift */; };
+		8EB860CE1C98670000DB393C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EB860C71C98670000DB393C /* Assets.xcassets */; };
+		8EB860CF1C98670000DB393C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EB860C91C98670000DB393C /* LaunchScreen.storyboard */; };
+		8EB860D01C98670000DB393C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EB860CB1C98670000DB393C /* Main.storyboard */; };
+		8EB860D91C986CCE00DB393C /* SwipyCell.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EB860C51C98669800DB393C /* SwipyCell.framework */; };
+		8EB860DA1C986CCE00DB393C /* SwipyCell.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8EB860C51C98669800DB393C /* SwipyCell.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8EB860C41C98669800DB393C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8EB860C01C98669800DB393C /* SwipyCell.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8EB860821C98654900DB393C;
+			remoteInfo = SwipyCell;
+		};
+		8EB860DB1C986CCE00DB393C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8EB860C01C98669800DB393C /* SwipyCell.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8EB860811C98654900DB393C;
+			remoteInfo = SwipyCell;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8EB860DD1C986CCE00DB393C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				8EB860DA1C986CCE00DB393C /* SwipyCell.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		8EB8609C1C98661E00DB393C /* SwipyCellExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwipyCellExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EB860B11C98666B00DB393C /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Source/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
+		8EB860B91C98666B00DB393C /* SwipyCellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwipyCellViewController.swift; path = Source/SwipyCellViewController.swift; sourceTree = SOURCE_ROOT; };
+		8EB860C01C98669800DB393C /* SwipyCell.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwipyCell.xcodeproj; path = ../SwipyCell.xcodeproj; sourceTree = "<group>"; };
+		8EB860C71C98670000DB393C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = SOURCE_ROOT; };
+		8EB860CA1C98670000DB393C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8EB860CC1C98670000DB393C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
+		8EB860CD1C98670000DB393C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Resources/Info.plist; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8EB860991C98661E00DB393C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8EB860D91C986CCE00DB393C /* SwipyCell.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8EB860931C98661E00DB393C = {
+			isa = PBXGroup;
+			children = (
+				8EB8609E1C98661E00DB393C /* SwipyCellExample */,
+				8EB8609D1C98661E00DB393C /* Products */,
+				8EB860C01C98669800DB393C /* SwipyCell.xcodeproj */,
+			);
+			sourceTree = "<group>";
+		};
+		8EB8609D1C98661E00DB393C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8EB8609C1C98661E00DB393C /* SwipyCellExample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8EB8609E1C98661E00DB393C /* SwipyCellExample */ = {
+			isa = PBXGroup;
+			children = (
+				8EB860B11C98666B00DB393C /* AppDelegate.swift */,
+				8EB860B91C98666B00DB393C /* SwipyCellViewController.swift */,
+				8EB860C61C9866ED00DB393C /* Supporting Files */,
+			);
+			path = SwipyCellExample;
+			sourceTree = "<group>";
+		};
+		8EB860C11C98669800DB393C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8EB860C51C98669800DB393C /* SwipyCell.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8EB860C61C9866ED00DB393C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8EB860CD1C98670000DB393C /* Info.plist */,
+				8EB860C71C98670000DB393C /* Assets.xcassets */,
+				8EB860C81C98670000DB393C /* Base.lproj */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8EB860C81C98670000DB393C /* Base.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				8EB860C91C98670000DB393C /* LaunchScreen.storyboard */,
+				8EB860CB1C98670000DB393C /* Main.storyboard */,
+			);
+			name = Base.lproj;
+			path = Resources/Base.lproj;
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8EB8609B1C98661E00DB393C /* SwipyCellExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8EB860AE1C98661E00DB393C /* Build configuration list for PBXNativeTarget "SwipyCellExample" */;
+			buildPhases = (
+				8EB860981C98661E00DB393C /* Sources */,
+				8EB860991C98661E00DB393C /* Frameworks */,
+				8EB8609A1C98661E00DB393C /* Resources */,
+				8EB860DD1C986CCE00DB393C /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8EB860DC1C986CCE00DB393C /* PBXTargetDependency */,
+			);
+			name = SwipyCellExample;
+			productName = SwipyCellExample;
+			productReference = 8EB8609C1C98661E00DB393C /* SwipyCellExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8EB860941C98661E00DB393C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Moritz Sternemann";
+				TargetAttributes = {
+					8EB8609B1C98661E00DB393C = {
+						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = AXTR5X4T2F;
+					};
+				};
+			};
+			buildConfigurationList = 8EB860971C98661E00DB393C /* Build configuration list for PBXProject "SwipyCellExample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8EB860931C98661E00DB393C;
+			productRefGroup = 8EB8609D1C98661E00DB393C /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 8EB860C11C98669800DB393C /* Products */;
+					ProjectRef = 8EB860C01C98669800DB393C /* SwipyCell.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				8EB8609B1C98661E00DB393C /* SwipyCellExample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		8EB860C51C98669800DB393C /* SwipyCell.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwipyCell.framework;
+			remoteRef = 8EB860C41C98669800DB393C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8EB8609A1C98661E00DB393C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8EB860D01C98670000DB393C /* Main.storyboard in Resources */,
+				8EB860CE1C98670000DB393C /* Assets.xcassets in Resources */,
+				8EB860CF1C98670000DB393C /* LaunchScreen.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8EB860981C98661E00DB393C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8EB860BF1C98666B00DB393C /* SwipyCellViewController.swift in Sources */,
+				8EB860BA1C98666B00DB393C /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8EB860DC1C986CCE00DB393C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwipyCell;
+			targetProxy = 8EB860DB1C986CCE00DB393C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8EB860C91C98670000DB393C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8EB860CA1C98670000DB393C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		8EB860CB1C98670000DB393C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8EB860CC1C98670000DB393C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8EB860AC1C98661E00DB393C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		8EB860AD1C98661E00DB393C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8EB860AF1C98661E00DB393C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/Resources/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = de.moritzsternemann.SwipyCellExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		8EB860B01C98661E00DB393C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/Resources/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = de.moritzsternemann.SwipyCellExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8EB860971C98661E00DB393C /* Build configuration list for PBXProject "SwipyCellExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8EB860AC1C98661E00DB393C /* Debug */,
+				8EB860AD1C98661E00DB393C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8EB860AE1C98661E00DB393C /* Build configuration list for PBXNativeTarget "SwipyCellExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8EB860AF1C98661E00DB393C /* Debug */,
+				8EB860B01C98661E00DB393C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8EB860941C98661E00DB393C /* Project object */;
+}
