@@ -43,17 +43,13 @@ class SwipyCellViewController: UITableViewController, SwipyCellDelegate {
   }
   
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    var cell: SwipyCell?// = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as? MSSwipeableTableViewCell
+    let cell = SwipyCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "cell")
+    cell.selectionStyle = .Gray
+    cell.contentView.backgroundColor = UIColor.whiteColor()
+  
+    configureCell(cell, forRowAtIndexPath: indexPath)
     
-    if (cell == nil) {
-      cell = SwipyCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "cell")
-      cell?.selectionStyle = .Gray
-      cell?.contentView.backgroundColor = UIColor.whiteColor()
-    }
-    
-    configureCell(cell!, forRowAtIndexPath: indexPath)
-    
-    return cell!
+    return cell
   }
 
   func configureCell(cell: SwipyCell, forRowAtIndexPath indexPath: NSIndexPath) {

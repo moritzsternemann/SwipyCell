@@ -12,8 +12,8 @@
 		8EB860CE1C98670000DB393C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EB860C71C98670000DB393C /* Assets.xcassets */; };
 		8EB860CF1C98670000DB393C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EB860C91C98670000DB393C /* LaunchScreen.storyboard */; };
 		8EB860D01C98670000DB393C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EB860CB1C98670000DB393C /* Main.storyboard */; };
-		8EB860D91C986CCE00DB393C /* SwipyCell.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EB860C51C98669800DB393C /* SwipyCell.framework */; };
-		8EB860DA1C986CCE00DB393C /* SwipyCell.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8EB860C51C98669800DB393C /* SwipyCell.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8EB860E31C9B00D300DB393C /* SwipyCell.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EB860C51C98669800DB393C /* SwipyCell.framework */; };
+		8EB860E41C9B00D300DB393C /* SwipyCell.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8EB860C51C98669800DB393C /* SwipyCell.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,7 +24,7 @@
 			remoteGlobalIDString = 8EB860821C98654900DB393C;
 			remoteInfo = SwipyCell;
 		};
-		8EB860DB1C986CCE00DB393C /* PBXContainerItemProxy */ = {
+		8EB860E51C9B00D300DB393C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8EB860C01C98669800DB393C /* SwipyCell.xcodeproj */;
 			proxyType = 1;
@@ -34,13 +34,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		8EB860DD1C986CCE00DB393C /* Embed Frameworks */ = {
+		8EB860E71C9B00D300DB393C /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				8EB860DA1C986CCE00DB393C /* SwipyCell.framework in Embed Frameworks */,
+				8EB860E41C9B00D300DB393C /* SwipyCell.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -63,7 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8EB860D91C986CCE00DB393C /* SwipyCell.framework in Frameworks */,
+				8EB860E31C9B00D300DB393C /* SwipyCell.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,12 +135,12 @@
 				8EB860981C98661E00DB393C /* Sources */,
 				8EB860991C98661E00DB393C /* Frameworks */,
 				8EB8609A1C98661E00DB393C /* Resources */,
-				8EB860DD1C986CCE00DB393C /* Embed Frameworks */,
+				8EB860E71C9B00D300DB393C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				8EB860DC1C986CCE00DB393C /* PBXTargetDependency */,
+				8EB860E61C9B00D300DB393C /* PBXTargetDependency */,
 			);
 			name = SwipyCellExample;
 			productName = SwipyCellExample;
@@ -223,10 +223,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		8EB860DC1C986CCE00DB393C /* PBXTargetDependency */ = {
+		8EB860E61C9B00D300DB393C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SwipyCell;
-			targetProxy = 8EB860DB1C986CCE00DB393C /* PBXContainerItemProxy */;
+			targetProxy = 8EB860E51C9B00D300DB393C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
