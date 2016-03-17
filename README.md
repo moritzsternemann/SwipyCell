@@ -1,5 +1,10 @@
 SwipyCell
 ---------
+[![Build Status](https://travis-ci.org/moritzsternemann/SwipyCell.svg)](https://travis-ci.org/moritzsternemann/SwipyCell)
+[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/SwipyCell.svg)](https://github.com/moritzsternemann/SwipyCell)
+[![Platform](https://img.shields.io/cocoapods/p/SwipyCell.svg)](https://github.com/moritzsternemann/SwipyCell)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/moritzsternemann/SwipyCell/master/LICENSE)
+[![Twitter](https://img.shields.io/badge/twitter-@_iMoritz-blue.svg?style=flat)](https://twitter.com/_iMoritz)
 
 *Swipeable UITableViewCell based on [MCSwipeTableViewCell](https://github.com/alikaragoz/MCSwipeTableViewCell), inspired by the popular [Mailbox App](http://mailboxapp.com), implemented in [Swift](https://github.com/apple/swift).*
 
