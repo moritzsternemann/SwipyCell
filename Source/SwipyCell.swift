@@ -214,28 +214,28 @@ open class SwipyCell: UITableViewCell {
 // MARK: - Swipe configuration
   
   open func setSwipeGesture(_ view: UIView, color: UIColor, mode: SwipyCellMode, state: SwipyCellState, completionHandler: @escaping MSSwipeCompletionBlock) {
-    if state.contains(.State1) {
+    if state.contains(.state1) {
       completionBlock1 = completionHandler
       view1 = view
       color1 = color
       modeForState1 = mode
     }
     
-    if state.contains(.State2) {
+    if state.contains(.state2) {
       completionBlock2 = completionHandler
       view2 = view
       color2 = color
       modeForState2 = mode
     }
     
-    if state.contains(.State3) {
+    if state.contains(.state3) {
       completionBlock3 = completionHandler
       view3 = view
       color3 = color
       modeForState3 = mode
     }
     
-    if state.contains(.State4) {
+    if state.contains(.state4) {
       completionBlock4 = completionHandler
       view4 = view
       color4 = color
@@ -279,13 +279,13 @@ open class SwipyCell: UITableViewCell {
       let cellState = stateWithPercentage(percentage)
       var cellMode: SwipyCellMode = .none
       
-      if (cellState == .State1 && modeForState1 != nil) {
+      if (cellState == .state1 && modeForState1 != nil) {
         cellMode = modeForState1
-      } else if (cellState == .State2 && modeForState2 != nil) {
+      } else if (cellState == .state2 && modeForState2 != nil) {
         cellMode = modeForState2
-      } else if (cellState == .State3 && modeForState3 != nil) {
+      } else if (cellState == .state3 && modeForState3 != nil) {
         cellMode = modeForState3
-      } else if (cellState == .State4 && modeForState4 != nil) {
+      } else if (cellState == .state4 && modeForState4 != nil) {
         cellMode = modeForState4
       }
       
@@ -432,22 +432,22 @@ open class SwipyCell: UITableViewCell {
   }
   
   func stateWithPercentage(_ percentage: CGFloat) -> SwipyCellState {
-    var state: SwipyCellState = .None
+    var state: SwipyCellState = .none
     
     if percentage >= firstTrigger && modeForState1 != nil {
-      state = .State1
+      state = .state1
     }
     
     if percentage >= secondTrigger && modeForState2 != nil {
-      state = .State2
+      state = .state2
     }
     
     if percentage <= -firstTrigger && modeForState3 != nil {
-      state = .State3
+      state = .state3
     }
     
     if percentage <= -secondTrigger && modeForState4 != nil {
-      state = .State4
+      state = .state4
     }
     
     return state
@@ -569,16 +569,16 @@ open class SwipyCell: UITableViewCell {
     var mode: SwipyCellMode = .none
     var completionBlock: MSSwipeCompletionBlock?
     
-    if state == .State1 {
+    if state == .state1 {
       mode = modeForState1
       completionBlock = completionBlock1
-    } else if state == .State2 {
+    } else if state == .state2 {
       mode = modeForState2
       completionBlock = completionBlock2
-    } else if state == .State3 {
+    } else if state == .state3 {
       mode = modeForState3
       completionBlock = completionBlock3
-    } else if state == .State4 {
+    } else if state == .state4 {
       mode = modeForState4
       completionBlock = completionBlock4
     }

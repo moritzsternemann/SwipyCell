@@ -17,11 +17,11 @@ public enum SwipyCellDirection: UInt {
 public struct SwipyCellState: OptionSet {
   public let rawValue: Int
   public init(rawValue: Int) { self.rawValue = rawValue }
-  public static let None = SwipyCellState(rawValue: 0)
-  public static let State1 = SwipyCellState(rawValue: (1 << 0))
-  public static let State2 = SwipyCellState(rawValue: (1 << 1))
-  public static let State3 = SwipyCellState(rawValue: (1 << 2))
-  public static let State4 = SwipyCellState(rawValue: (1 << 3))
+  public static let none = SwipyCellState(rawValue: 0)
+  public static let state1 = SwipyCellState(rawValue: (1 << 0))
+  public static let state2 = SwipyCellState(rawValue: (1 << 1))
+  public static let state3 = SwipyCellState(rawValue: (1 << 2))
+  public static let state4 = SwipyCellState(rawValue: (1 << 3))
 }
 
 public enum SwipyCellMode: UInt {
