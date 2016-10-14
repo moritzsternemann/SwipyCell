@@ -8,15 +8,45 @@
 
 import UIKit
 
-public protocol SwipyCellDelegate {
-  func swipeableTableViewCellDidStartSwiping(cell: SwipyCell)
-  func swipeableTableViewCellDidEndSwiping(cell: SwipyCell)
-  func swipeableTableViewCell(cell: SwipyCell, didSwipeWithPercentage percentage: CGFloat)
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
 }
 
-public class SwipyCell: UITableViewCell {
+fileprivate func >= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l >= r
+  default:
+    return !(lhs < rhs)
+  }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
+
+public protocol SwipyCellDelegate {
+  func swipeableTableViewCellDidStartSwiping(_ cell: SwipyCell)
+  func swipeableTableViewCellDidEndSwiping(_ cell: SwipyCell)
+  func swipeableTableViewCell(_ cell: SwipyCell, didSwipeWithPercentage percentage: CGFloat)
+}
+
+open class SwipyCell: UITableViewCell {
   
-  private typealias `Self` = SwipyCell
+  fileprivate typealias `Self` = SwipyCell
   
   static let msStop1              = 0.25 // Percentage limit to trigger the first action
   static let msStop2              = 0.75 // Percentage limit to trigger the second action
@@ -30,7 +60,7 @@ public class SwipyCell: UITableViewCell {
   static let msDurationHighLimit  = 0.1  // Highest duration when swiping the cell because we try to simulate velocity
   public typealias MSSwipeCompletionBlock = (SwipyCell, SwipyCellState, SwipyCellMode) -> ()
   
-  public var delegate: SwipyCellDelegate?
+  open var delegate: SwipyCellDelegate?
   var direction: SwipyCellDirection!
   var currentPercentage: CGFloat!
   var isExited: Bool!
@@ -41,13 +71,13 @@ public class SwipyCell: UITableViewCell {
   var activeView: UIView!
   var dragging: Bool!
   var shouldDrag: Bool!
-  public var shouldAnimateIcons: Bool!
-  public var firstTrigger: CGFloat!
-  public var secondTrigger: CGFloat!
+  open var shouldAnimateIcons: Bool!
+  open var firstTrigger: CGFloat!
+  open var secondTrigger: CGFloat!
   var damping: CGFloat!
   var velocity: CGFloat!
-  var animationDuration: NSTimeInterval!
-  public var defaultColor: UIColor!
+  var animationDuration: TimeInterval!
+  open var defaultColor: UIColor!
   var completionBlock1: MSSwipeCompletionBlock!
   var completionBlock2: MSSwipeCompletionBlock!
   var completionBlock3: MSSwipeCompletionBlock!
@@ -80,7 +110,7 @@ public class SwipyCell: UITableViewCell {
   func initializer() {
     initDefaults()
     
-    panGestureRecognizer = UIPanGestureRecognizer(target: self, action: Selector("handlePanGestureRecognizer:"))
+    panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(SwipyCell.handlePanGestureRecognizer(_:)))
     addGestureRecognizer(panGestureRecognizer)
     panGestureRecognizer.delegate = self
   }
@@ -98,12 +128,12 @@ public class SwipyCell: UITableViewCell {
     velocity = CGFloat(Self.msVelocity)
     animationDuration = Self.msAnimationDuration
     
-    defaultColor = UIColor.whiteColor()
+    defaultColor = UIColor.white
     
-    modeForState1 = .None
-    modeForState2 = .None
-    modeForState3 = .None
-    modeForState4 = .None
+    modeForState1 = .none
+    modeForState2 = .none
+    modeForState3 = .none
+    modeForState4 = .none
     
     color1 = nil
     color2 = nil
@@ -119,7 +149,7 @@ public class SwipyCell: UITableViewCell {
   
 // MARK: - Prepare reuse
   
-  override public func prepareForReuse() {
+  override open func prepareForReuse() {
     super.prepareForReuse()
     
     uninstallSwipingView()
@@ -135,8 +165,8 @@ public class SwipyCell: UITableViewCell {
     
     let isContentViewBackgroundClear = (contentView.backgroundColor != nil)
     if isContentViewBackgroundClear {
-      let isBackgroundClear = (backgroundColor == UIColor.clearColor())
-      contentView.backgroundColor = isBackgroundClear ? UIColor.whiteColor() : backgroundColor
+      let isBackgroundClear = (backgroundColor == UIColor.clear)
+      contentView.backgroundColor = isBackgroundClear ? UIColor.white : backgroundColor
     }
     
     let contentViewScreenshotImage = imageWithView(self)
@@ -146,11 +176,11 @@ public class SwipyCell: UITableViewCell {
     }
     
     colorIndicatorView = UIView(frame: self.bounds)
-    colorIndicatorView.autoresizingMask = [.FlexibleHeight, .FlexibleWidth]
+    colorIndicatorView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     addSubview(colorIndicatorView)
     
     slidingView = UIView()
-    slidingView.contentMode = .Center
+    slidingView.contentMode = .center
     colorIndicatorView.addSubview(slidingView)
     
     contentScreenshotView = UIImageView(image: contentViewScreenshotImage)
@@ -172,7 +202,7 @@ public class SwipyCell: UITableViewCell {
     contentScreenshotView = nil
   }
   
-  func setViewOfSlidingView(slidingView: UIView) {
+  func setViewOfSlidingView(_ slidingView: UIView) {
     let subviews = self.slidingView.subviews
     _ = subviews.map { view in
       view.removeFromSuperview()
@@ -183,29 +213,29 @@ public class SwipyCell: UITableViewCell {
   
 // MARK: - Swipe configuration
   
-  public func setSwipeGesture(view: UIView, color: UIColor, mode: SwipyCellMode, state: SwipyCellState, completionHandler: MSSwipeCompletionBlock) {
-    if state.contains(.State1) {
+  open func setSwipeGesture(_ view: UIView, color: UIColor, mode: SwipyCellMode, state: SwipyCellState, completionHandler: @escaping MSSwipeCompletionBlock) {
+    if state.contains(.state1) {
       completionBlock1 = completionHandler
       view1 = view
       color1 = color
       modeForState1 = mode
     }
     
-    if state.contains(.State2) {
+    if state.contains(.state2) {
       completionBlock2 = completionHandler
       view2 = view
       color2 = color
       modeForState2 = mode
     }
     
-    if state.contains(.State3) {
+    if state.contains(.state3) {
       completionBlock3 = completionHandler
       view3 = view
       color3 = color
       modeForState3 = mode
     }
     
-    if state.contains(.State4) {
+    if state.contains(.state4) {
       completionBlock4 = completionHandler
       view4 = view
       color4 = color
@@ -215,51 +245,51 @@ public class SwipyCell: UITableViewCell {
   
 // MARK: - Handle gestures
   
-  func handlePanGestureRecognizer(gesture: UIPanGestureRecognizer) {
+  func handlePanGestureRecognizer(_ gesture: UIPanGestureRecognizer) {
     if (shouldDrag == false || isExited == true) {
       return
     }
     
     let state = gesture.state
-    let translation = gesture.translationInView(self)
-    let velocity = gesture.velocityInView(self)
+    let translation = gesture.translation(in: self)
+    let velocity = gesture.velocity(in: self)
     var percentage: CGFloat = 0.0
     if let contentScreenshotView = contentScreenshotView {
-      percentage = percentageWithOffset(CGRectGetMinX(contentScreenshotView.frame), relativeToWidth: CGRectGetWidth(self.bounds))
+      percentage = percentageWithOffset(contentScreenshotView.frame.minX, relativeToWidth: self.bounds.width)
     }
     let animationDuration = animationDurationWithVelocity(velocity)
     direction = directionWithPercentage(percentage)
     
-    if (state == .Began || state == .Changed) {
+    if (state == .began || state == .changed) {
       dragging = true
       
       setupSwipingView()
       
       let center = CGPoint(x: contentScreenshotView!.center.x + translation.x, y: contentScreenshotView!.center.y)
       contentScreenshotView!.center = center
-      animateWithOffset(CGRectGetMinX(contentScreenshotView!.frame))
-      gesture.setTranslation(CGPointZero, inView: self)
+      animateWithOffset(contentScreenshotView!.frame.minX)
+      gesture.setTranslation(CGPoint.zero, in: self)
       
       delegate?.swipeableTableViewCell(self, didSwipeWithPercentage: percentage)
-    } else if (state == .Ended || state == .Cancelled) {
+    } else if (state == .ended || state == .cancelled) {
       dragging = false
       activeView = viewWithPercentage(percentage)
       currentPercentage = percentage
       
       let cellState = stateWithPercentage(percentage)
-      var cellMode: SwipyCellMode = .None
+      var cellMode: SwipyCellMode = .none
       
-      if (cellState == .State1 && modeForState1 != nil) {
+      if (cellState == .state1 && modeForState1 != nil) {
         cellMode = modeForState1
-      } else if (cellState == .State2 && modeForState2 != nil) {
+      } else if (cellState == .state2 && modeForState2 != nil) {
         cellMode = modeForState2
-      } else if (cellState == .State3 && modeForState3 != nil) {
+      } else if (cellState == .state3 && modeForState3 != nil) {
         cellMode = modeForState3
-      } else if (cellState == .State4 && modeForState4 != nil) {
+      } else if (cellState == .state4 && modeForState4 != nil) {
         cellMode = modeForState4
       }
       
-      if (cellMode == .Exit && direction != .Center) {
+      if (cellMode == .exit && direction != .center) {
         moveWithDuration(animationDuration, direction: direction)
       } else {
         swipeToOrigin {
@@ -273,10 +303,10 @@ public class SwipyCell: UITableViewCell {
   
 // MARK: - UIGestureRecognizerDelegate
  
-  override public func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
+  override open func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
     guard let g = gestureRecognizer as? UIPanGestureRecognizer else { return false }
     
-    let point = g.velocityInView(self)
+    let point = g.velocity(in: self)
     
     if fabs(point.x) > fabs(point.y) {
       if point.x < 0 && modeForState3 == nil && modeForState4 == nil {
@@ -297,7 +327,7 @@ public class SwipyCell: UITableViewCell {
   
 // MARK: - Percentage
   
-  func offsetWithPercentage(percentage: CGFloat, relateiveToWidth width: CGFloat) -> CGFloat {
+  func offsetWithPercentage(_ percentage: CGFloat, relateiveToWidth width: CGFloat) -> CGFloat {
     var offset = percentage * width
     
     if (offset < -width) {
@@ -309,7 +339,7 @@ public class SwipyCell: UITableViewCell {
     return offset
   }
   
-  func percentageWithOffset(offset: CGFloat, relativeToWidth width: CGFloat) -> CGFloat {
+  func percentageWithOffset(_ offset: CGFloat, relativeToWidth width: CGFloat) -> CGFloat {
     var percentage = offset / width
     
     if (percentage < -1.0) {
@@ -321,8 +351,8 @@ public class SwipyCell: UITableViewCell {
     return percentage
   }
   
-  func animationDurationWithVelocity(velocity: CGPoint) -> NSTimeInterval {
-    let width = CGRectGetWidth(bounds)
+  func animationDurationWithVelocity(_ velocity: CGPoint) -> TimeInterval {
+    let width = bounds.width
     let animationDurationDiff = Self.msDurationHighLimit - Self.msDurationLowLimit
     var horizontalVelocity = velocity.x
     
@@ -332,20 +362,20 @@ public class SwipyCell: UITableViewCell {
       horizontalVelocity = width
     }
     
-    return NSTimeInterval(Self.msDurationHighLimit + Self.msDurationLowLimit - fabs((Double(horizontalVelocity / width) * animationDurationDiff)))
+    return TimeInterval(Self.msDurationHighLimit + Self.msDurationLowLimit - fabs((Double(horizontalVelocity / width) * animationDurationDiff)))
   }
   
-  func directionWithPercentage(percentage: CGFloat) -> SwipyCellDirection {
+  func directionWithPercentage(_ percentage: CGFloat) -> SwipyCellDirection {
     if percentage < 0 {
-      return .Left
+      return .left
     } else if percentage > 0 {
-      return .Right
+      return .right
     } else {
-      return .Center
+      return .center
     }
   }
   
-  func viewWithPercentage(percentage: CGFloat) -> UIView? {
+  func viewWithPercentage(_ percentage: CGFloat) -> UIView? {
     var view: UIView?
   
     if percentage >= 0 && modeForState1 != nil {
@@ -367,7 +397,7 @@ public class SwipyCell: UITableViewCell {
     return view
   }
   
-  func alphaWithPercentage(percentage: CGFloat) -> CGFloat {
+  func alphaWithPercentage(_ percentage: CGFloat) -> CGFloat {
     var alpha: CGFloat = 1.0
     
     if percentage >= 0 && percentage < firstTrigger {
@@ -379,8 +409,8 @@ public class SwipyCell: UITableViewCell {
     return alpha
   }
   
-  func colorWithPercentage(percentage: CGFloat) -> UIColor {
-    var color = defaultColor ?? UIColor.clearColor()
+  func colorWithPercentage(_ percentage: CGFloat) -> UIColor {
+    var color = defaultColor ?? UIColor.clear
     
     if percentage > 0 && modeForState1 != nil {
       color = color1
@@ -401,23 +431,23 @@ public class SwipyCell: UITableViewCell {
     return color
   }
   
-  func stateWithPercentage(percentage: CGFloat) -> SwipyCellState {
-    var state: SwipyCellState = .None
+  func stateWithPercentage(_ percentage: CGFloat) -> SwipyCellState {
+    var state: SwipyCellState = .none
     
     if percentage >= firstTrigger && modeForState1 != nil {
-      state = .State1
+      state = .state1
     }
     
     if percentage >= secondTrigger && modeForState2 != nil {
-      state = .State2
+      state = .state2
     }
     
     if percentage <= -firstTrigger && modeForState3 != nil {
-      state = .State3
+      state = .state3
     }
     
     if percentage <= -secondTrigger && modeForState4 != nil {
-      state = .State4
+      state = .state4
     }
     
     return state
@@ -425,8 +455,8 @@ public class SwipyCell: UITableViewCell {
   
 // MARK: - Movement
   
-  func animateWithOffset(offset: CGFloat) {
-    let percentage = percentageWithOffset(offset, relativeToWidth: CGRectGetWidth(bounds))
+  func animateWithOffset(_ offset: CGFloat) {
+    let percentage = percentageWithOffset(offset, relativeToWidth: bounds.width)
     let view = viewWithPercentage(percentage)
     
     if let v = view {
@@ -439,27 +469,27 @@ public class SwipyCell: UITableViewCell {
     colorIndicatorView.backgroundColor = color
   }
   
-  func slideViewWithPercentage(percentage: CGFloat, view: UIView?, isDragging: Bool) {
+  func slideViewWithPercentage(_ percentage: CGFloat, view: UIView?, isDragging: Bool) {
     guard let view = view else { return }
     
-    var position = CGPointZero
-    position.y = CGRectGetHeight(bounds) / 2.0
+    var position = CGPoint.zero
+    position.y = bounds.height / 2.0
     
     if isDragging {
       if percentage >= 0 && percentage < firstTrigger {
-        position.x = offsetWithPercentage((firstTrigger / 2), relateiveToWidth: CGRectGetWidth(bounds))
+        position.x = offsetWithPercentage((firstTrigger / 2), relateiveToWidth: bounds.width)
       } else if percentage >= firstTrigger {
-        position.x = offsetWithPercentage(percentage - (firstTrigger / 2), relateiveToWidth: CGRectGetWidth(bounds))
+        position.x = offsetWithPercentage(percentage - (firstTrigger / 2), relateiveToWidth: bounds.width)
       } else if percentage < 0 && percentage >= -firstTrigger {
-        position.x = CGRectGetWidth(bounds) - offsetWithPercentage((firstTrigger / 2), relateiveToWidth: CGRectGetWidth(bounds))
+        position.x = bounds.width - offsetWithPercentage((firstTrigger / 2), relateiveToWidth: bounds.width)
       } else if percentage < -firstTrigger {
-        position.x = CGRectGetWidth(bounds) + offsetWithPercentage(percentage + (firstTrigger / 2), relateiveToWidth: CGRectGetWidth(bounds))
+        position.x = bounds.width + offsetWithPercentage(percentage + (firstTrigger / 2), relateiveToWidth: bounds.width)
       }
     } else {
-      if direction == .Right {
-        position.x = offsetWithPercentage((firstTrigger / 2.0), relateiveToWidth: CGRectGetWidth(bounds))
-      } else if direction == .Left {
-        position.x = CGRectGetWidth(bounds) - offsetWithPercentage((firstTrigger / 2.0), relateiveToWidth: CGRectGetWidth(bounds))
+      if direction == .right {
+        position.x = offsetWithPercentage((firstTrigger / 2.0), relateiveToWidth: bounds.width)
+      } else if direction == .left {
+        position.x = bounds.width - offsetWithPercentage((firstTrigger / 2.0), relateiveToWidth: bounds.width)
       } else {
         return
       }
@@ -470,28 +500,28 @@ public class SwipyCell: UITableViewCell {
                                  y: position.y - activeViewSize.height / 2.0,
                                  width: activeViewSize.width, height: activeViewSize.height)
     
-    activeViewFrame = CGRectIntegral(activeViewFrame)
+    activeViewFrame = activeViewFrame.integral
     slidingView.frame = activeViewFrame
   }
   
-  func moveWithDuration(duration: NSTimeInterval, direction: SwipyCellDirection) {
+  func moveWithDuration(_ duration: TimeInterval, direction: SwipyCellDirection) {
     isExited = true
     var origin: CGFloat = 0.0
     
-    if direction == .Left {
-      origin = -CGRectGetWidth(bounds)
-    } else if direction == .Right {
-      origin = CGRectGetWidth(bounds)
+    if direction == .left {
+      origin = -bounds.width
+    } else if direction == .right {
+      origin = bounds.width
     }
     
-    let percentage = percentageWithOffset(origin, relativeToWidth: CGRectGetWidth(bounds))
+    let percentage = percentageWithOffset(origin, relativeToWidth: bounds.width)
     var frame = contentScreenshotView!.frame
     frame.origin.x = origin
     
     let color = colorWithPercentage(currentPercentage)
     colorIndicatorView.backgroundColor = color
     
-    UIView.animateWithDuration(duration, delay: 0, options: [.CurveEaseOut, .AllowUserInteraction], animations: {
+    UIView.animate(withDuration: duration, delay: 0, options: [.curveEaseOut, .allowUserInteraction], animations: {
       self.contentScreenshotView!.frame = frame
       self.slidingView.alpha = 0
       self.slideViewWithPercentage(percentage, view: self.activeView, isDragging: self.shouldAnimateIcons)
@@ -500,8 +530,8 @@ public class SwipyCell: UITableViewCell {
     })
   }
   
-  public func swipeToOrigin(completionHandler: () -> ()) {
-    UIView.animateWithDuration(animationDuration, delay: 0, usingSpringWithDamping: damping, initialSpringVelocity: velocity, options: .CurveEaseInOut, animations: {
+  open func swipeToOrigin(_ completionHandler: @escaping () -> ()) {
+    UIView.animate(withDuration: animationDuration, delay: 0, usingSpringWithDamping: damping, initialSpringVelocity: velocity, options: UIViewAnimationOptions(), animations: {
       var frame = self.contentScreenshotView!.frame
       frame.origin.x = 0
       self.contentScreenshotView!.frame = frame
@@ -523,32 +553,32 @@ public class SwipyCell: UITableViewCell {
   
 // MARK: - Utilities
 
-  func imageWithView(view: UIView) -> UIImage {
-    let scale = UIScreen.mainScreen().scale
+  func imageWithView(_ view: UIView) -> UIImage {
+    let scale = UIScreen.main.scale
     UIGraphicsBeginImageContextWithOptions(view.bounds.size, false, scale)
-    view.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+    view.layer.render(in: UIGraphicsGetCurrentContext()!)
     let image = UIGraphicsGetImageFromCurrentImageContext()
     UIGraphicsEndImageContext()
-    return image
+    return image!
   }
   
 // MARK: - Completion block
   
   func executeCompletionBlock() {
     let state: SwipyCellState = stateWithPercentage(currentPercentage)
-    var mode: SwipyCellMode = .None
+    var mode: SwipyCellMode = .none
     var completionBlock: MSSwipeCompletionBlock?
     
-    if state == .State1 {
+    if state == .state1 {
       mode = modeForState1
       completionBlock = completionBlock1
-    } else if state == .State2 {
+    } else if state == .state2 {
       mode = modeForState2
       completionBlock = completionBlock2
-    } else if state == .State3 {
+    } else if state == .state3 {
       mode = modeForState3
       completionBlock = completionBlock3
-    } else if state == .State4 {
+    } else if state == .state4 {
       mode = modeForState4
       completionBlock = completionBlock4
     }
