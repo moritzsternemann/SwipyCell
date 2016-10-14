@@ -19,10 +19,10 @@ class SwipyCellViewController: UITableViewController, SwipyCellDelegate {
     super.viewDidLoad()
     numberItems = self.initialNumberItems
 
-    navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: Selector("reload"))
+    navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(SwipyCellViewController.reload))
     
     let backgroundView = UIView(frame: tableView.frame)
-    backgroundView.backgroundColor = UIColor.whiteColor()
+    backgroundView.backgroundColor = UIColor.white
     tableView.backgroundView = backgroundView
     tableView.tableFooterView = UIView()
   }
@@ -34,25 +34,25 @@ class SwipyCellViewController: UITableViewController, SwipyCellDelegate {
   
 // MARK: - Table View Data Source
   
-  override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+  override func numberOfSections(in tableView: UITableView) -> Int {
     return 1
   }
   
-  override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return numberItems
   }
   
-  override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = SwipyCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "cell")
-    cell.selectionStyle = .Gray
-    cell.contentView.backgroundColor = UIColor.whiteColor()
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = SwipyCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "cell")
+    cell.selectionStyle = .gray
+    cell.contentView.backgroundColor = UIColor.white
   
     configureCell(cell, forRowAtIndexPath: indexPath)
     
     return cell
   }
 
-  func configureCell(cell: SwipyCell, forRowAtIndexPath indexPath: NSIndexPath) {
+  func configureCell(_ cell: SwipyCell, forRowAtIndexPath indexPath: IndexPath) {
     let checkView = viewWithImageName("check")
     let greenColor = UIColor(red: 85.0 / 255.0, green: 213.0 / 255.0, blue: 80.0 / 255.0, alpha: 1.0)
 
@@ -68,123 +68,123 @@ class SwipyCellViewController: UITableViewController, SwipyCellDelegate {
     cell.defaultColor = tableView.backgroundView?.backgroundColor
     cell.delegate = self
     
-    if indexPath.row % initialNumberItems == 0 {
+    if (indexPath as NSIndexPath).row % initialNumberItems == 0 {
       cell.textLabel?.text = "Switch Mode Cell"
       cell.detailTextLabel?.text = "Swipe to switch"
       
-      cell.setSwipeGesture(checkView, color: greenColor, mode: .Switch, state: .State1, completionHandler: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
+      cell.setSwipeGesture(checkView, color: greenColor, mode: .switch, state: .State1, completionHandler: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
         print("Did swipe \"Checkmark\" cell")
       })
       
-      cell.setSwipeGesture(crossView, color: redColor, mode: .Switch, state: .State2, completionHandler: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
+      cell.setSwipeGesture(crossView, color: redColor, mode: .switch, state: .State2, completionHandler: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
         print("Did swipe \"Cross\" cell")
       })
       
-      cell.setSwipeGesture(clockView, color: yellowColor, mode: .Switch, state: .State3, completionHandler: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
+      cell.setSwipeGesture(clockView, color: yellowColor, mode: .switch, state: .State3, completionHandler: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
         print("Did swipe \"Clock\" cell")
       })
       
-      cell.setSwipeGesture(listView, color: brownColor, mode: .Switch, state: .State4, completionHandler: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
+      cell.setSwipeGesture(listView, color: brownColor, mode: .switch, state: .State4, completionHandler: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
         print("Did swipe \"List\" cell")
       })
-    } else if indexPath.row % initialNumberItems == 1 {
+    } else if (indexPath as NSIndexPath).row % initialNumberItems == 1 {
       cell.textLabel?.text = "Exit Mode Cell"
       cell.detailTextLabel?.text = "Swipe to delete"
       
-      cell.setSwipeGesture(crossView, color: redColor, mode: .Exit, state: .State1, completionHandler: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
+      cell.setSwipeGesture(crossView, color: redColor, mode: .exit, state: .State1, completionHandler: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
         print("Did swipe \"Cross\" cell")
         
         self.deleteCell(cell)
       })
-    } else if indexPath.row % initialNumberItems == 2 {
+    } else if (indexPath as NSIndexPath).row % initialNumberItems == 2 {
       cell.textLabel?.text = "Mixed Mode Cell"
       cell.detailTextLabel?.text = "Swipe to switch or delete"
       
-      cell.setSwipeGesture(checkView, color: greenColor, mode: .Switch, state: .State1, completionHandler: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
+      cell.setSwipeGesture(checkView, color: greenColor, mode: .switch, state: .State1, completionHandler: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
         print("Did swipe \"Checkmark\" cell")
       })
       
-      cell.setSwipeGesture(crossView, color: redColor, mode: .Exit, state: .State2, completionHandler: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
+      cell.setSwipeGesture(crossView, color: redColor, mode: .exit, state: .State2, completionHandler: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
         print("Did swipe \"Cross\" cell")
         
         self.deleteCell(cell)
       })
-    } else if indexPath.row % initialNumberItems == 3 {
+    } else if (indexPath as NSIndexPath).row % initialNumberItems == 3 {
       cell.textLabel?.text = "Un-animated Icons"
       cell.detailTextLabel?.text = "Swipe"
       cell.shouldAnimateIcons = false
       
-      cell.setSwipeGesture(checkView, color: greenColor, mode: .Switch, state: .State1, completionHandler: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
+      cell.setSwipeGesture(checkView, color: greenColor, mode: .switch, state: .State1, completionHandler: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
         print("Did swipe \"Checkmark\" cell")
       })
       
-      cell.setSwipeGesture(crossView, color: redColor, mode: .Exit, state: .State2, completionHandler: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
+      cell.setSwipeGesture(crossView, color: redColor, mode: .exit, state: .State2, completionHandler: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
         print("Did swipe \"Cross\" cell")
         
         self.deleteCell(cell)
       })
-    } else if indexPath.row % initialNumberItems == 4 {
+    } else if (indexPath as NSIndexPath).row % initialNumberItems == 4 {
       cell.textLabel?.text = "Right swipe only"
       cell.detailTextLabel?.text = "Swipe"
       
-      cell.setSwipeGesture(clockView, color: yellowColor, mode: .Switch, state: .State3, completionHandler: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
+      cell.setSwipeGesture(clockView, color: yellowColor, mode: .switch, state: .State3, completionHandler: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
         print("Did swipe \"Clock\" cell")
       })
       
-      cell.setSwipeGesture(listView, color: brownColor, mode: .Switch, state: .State4, completionHandler: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
+      cell.setSwipeGesture(listView, color: brownColor, mode: .switch, state: .State4, completionHandler: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
         print("Did swipe \"List\" cell")
       })
-    } else if indexPath.row % initialNumberItems == 5 {
+    } else if (indexPath as NSIndexPath).row % initialNumberItems == 5 {
       cell.textLabel?.text = "Small triggers"
       cell.detailTextLabel?.text = "Using 10% and 50%"
       cell.firstTrigger = 0.1
       cell.secondTrigger = 0.5
       
-      cell.setSwipeGesture(checkView, color: greenColor, mode: .Switch, state: .State1, completionHandler: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
+      cell.setSwipeGesture(checkView, color: greenColor, mode: .switch, state: .State1, completionHandler: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
         print("Did swipe \"Checkmark\" cell")
       })
       
-      cell.setSwipeGesture(crossView, color: redColor, mode: .Exit, state: .State2, completionHandler: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
+      cell.setSwipeGesture(crossView, color: redColor, mode: .exit, state: .State2, completionHandler: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
         print("Did swipe \"Cross\" cell")
         
         self.deleteCell(cell)
       })
-    } else if indexPath.row % initialNumberItems == 6 {
+    } else if (indexPath as NSIndexPath).row % initialNumberItems == 6 {
       cell.textLabel?.text = "Exit Mode Cell + Confirmation"
       cell.detailTextLabel?.text = "Swipe to delete"
       
-      cell.setSwipeGesture(crossView, color: redColor, mode: .Exit, state: .State1, completionHandler: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
+      cell.setSwipeGesture(crossView, color: redColor, mode: .exit, state: .State1, completionHandler: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
         print("Did swipe \"Cross\" cell")
         
         self.cellToDelete = cell
         
-        let alertController = UIAlertController(title: "Delete?", message: "Are you sure you want to delete the cell?", preferredStyle: .Alert)
+        let alertController = UIAlertController(title: "Delete?", message: "Are you sure you want to delete the cell?", preferredStyle: .alert)
 
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action) in
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
           cell.swipeToOrigin {
             print("Swiped back")
           }
         })
         alertController.addAction(cancelAction)
         
-        let deleteAction = UIAlertAction(title: "Delete", style: .Destructive, handler: { (action) in
-          self.numberItems--
-          self.tableView.deleteRowsAtIndexPaths([self.tableView.indexPathForCell(cell)!], withRowAnimation: .Fade)
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: { (action) in
+          self.numberItems -= 1
+          self.tableView.deleteRows(at: [self.tableView.indexPath(for: cell)!], with: .fade)
         })
         alertController.addAction(deleteAction)
         
-        self.presentViewController(alertController, animated: true, completion: {})
+        self.present(alertController, animated: true, completion: {})
       })
     }
   }
   
-  override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+  override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return 70.0
   }
   
 // MARK: - Table View Delegate
   
-  override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let tableViewController = SwipyCellViewController()
     self.navigationController?.pushViewController(tableViewController, animated: true)
   }
@@ -192,17 +192,17 @@ class SwipyCellViewController: UITableViewController, SwipyCellDelegate {
 // MARK: - SwipyCell Delegate
   
   // When the user starts swiping the cell this method is called
-  func swipeableTableViewCellDidStartSwiping(cell: SwipyCell) {
+  func swipeableTableViewCellDidStartSwiping(_ cell: SwipyCell) {
     
   }
   
   // When the user ends swiping the cell this method is called
-  func swipeableTableViewCellDidEndSwiping(cell: SwipyCell) {
+  func swipeableTableViewCellDidEndSwiping(_ cell: SwipyCell) {
     
   }
   
   // When the user is dragging, this method is called with the percentage from the border
-  func swipeableTableViewCell(cell: SwipyCell, didSwipeWithPercentage percentage: CGFloat) {
+  func swipeableTableViewCell(_ cell: SwipyCell, didSwipeWithPercentage percentage: CGFloat) {
     
   }
   
@@ -210,20 +210,20 @@ class SwipyCellViewController: UITableViewController, SwipyCellDelegate {
   
   func reload() {
     numberItems = self.initialNumberItems
-    tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Fade)
+    tableView.reloadSections(IndexSet(integer: 0), with: .fade)
   }
   
-  func deleteCell(cell: SwipyCell) {
-    numberItems--
+  func deleteCell(_ cell: SwipyCell) {
+    numberItems -= 1
     
-    let indexPath = tableView.indexPathForCell(cell)
-    tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+    let indexPath = tableView.indexPath(for: cell)
+    tableView.deleteRows(at: [indexPath!], with: .fade)
   }
   
-  func viewWithImageName(imageName: String) -> UIView {
+  func viewWithImageName(_ imageName: String) -> UIView {
     let image = UIImage(named: imageName)
     let imageView = UIImageView(image: image)
-    imageView.contentMode = .Center
+    imageView.contentMode = .center
     return imageView
   }
 }

@@ -9,12 +9,12 @@
 import Foundation
 
 public enum SwipyCellDirection: UInt {
-  case Left = 0
-  case Center
-  case Right
+  case left = 0
+  case center
+  case right
 }
 
-public struct SwipyCellState: OptionSetType {
+public struct SwipyCellState: OptionSet {
   public let rawValue: Int
   public init(rawValue: Int) { self.rawValue = rawValue }
   public static let None = SwipyCellState(rawValue: 0)
@@ -25,7 +25,7 @@ public struct SwipyCellState: OptionSetType {
 }
 
 public enum SwipyCellMode: UInt {
-  case None = 0
-  case Exit
-  case Switch
+  case none = 0
+  case exit
+  case `switch`
 }
