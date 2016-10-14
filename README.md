@@ -6,9 +6,9 @@ SwipyCell
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/SwipyCell.svg)](https://github.com/moritzsternemann/SwipyCell)
 [![Platform](https://img.shields.io/cocoapods/p/SwipyCell.svg)](https://github.com/moritzsternemann/SwipyCell)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/moritzsternemann/SwipyCell/master/LICENSE)
-[![Twitter](https://img.shields.io/badge/twitter-@_iMoritz-blue.svg?style=flat)](https://twitter.com/_iMoritz)
+[![Twitter](https://img.shields.io/badge/twitter-@iMoritzS-blue.svg?style=flat)](https://twitter.com/iMoritzS)
 
-*Swipeable UITableViewCell based on [MCSwipeTableViewCell](https://github.com/alikaragoz/MCSwipeTableViewCell), inspired by the popular [Mailbox App](http://mailboxapp.com), implemented in [Swift](https://github.com/apple/swift).*
+*Swipeable UITableViewCell inspired by the popular [Mailbox App](http://mailboxapp.com), implemented in [Swift](https://github.com/apple/swift).*
 
 <p align="center"><img src="https://raw.githubusercontent.com/moritzsternemann/SwipyCell/master/github-assets/swipycell-hero.png?raw=true" width="50%"/></p>
 
@@ -62,37 +62,37 @@ override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath:
   let cell = SwipyCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "cell")
   cell.selectionStyle = .Gray
   cell.contentView.backgroundColor = UIColor.whiteColor()
-  
+
   let checkView = viewWithImageName("check")
   let greenColor = UIColor(red: 85.0 / 255.0, green: 213.0 / 255.0, blue: 80.0 / 255.0, alpha: 1.0)
-  
+
   let crossView = viewWithImageName("cross")
   let redColor = UIColor(red: 232.0 / 255.0, green: 61.0 / 255.0, blue: 14.0 / 255.0, alpha: 1.0)
-  
+
   let clockView = viewWithImageName("clock")
   let yellowColor = UIColor(red: 254.0 / 255.0, green: 217.0 / 255.0, blue: 56.0 / 255.0, alpha: 1.0)
-  
+
   let listView = viewWithImageName("list")
   let brownColor = UIColor(red: 206.0 / 255.0, green: 149.0 / 255.0, blue: 98.0 / 255.0, alpha: 1.0)
-  
+
   cell.defaultColor = tableView.backgroundView?.backgroundColor
   cell.delegate = self
-  
+
   cell.textLabel?.text = "Switch Mode Cell"
   cell.detailTextLabel?.text = "Swipe to switch"
 
   cell.setSwipeGesture(checkView, color: greenColor, mode: .Switch, state: .State1, completionHandler: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
     print("Did swipe \"Checkmark\" cell")
   })
-  
+
   cell.setSwipeGesture(crossView, color: redColor, mode: .Switch, state: .State2, completionHandler: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
     print("Did swipe \"Cross\" cell")
   })
-  
+
   cell.setSwipeGesture(clockView, color: yellowColor, mode: .Switch, state: .State3, completionHandler: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
     print("Did swipe \"Clock\" cell")
   })
-  
+
   cell.setSwipeGesture(listView, color: brownColor, mode: .Switch, state: .State4, completionHandler: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
     print("Did swipe \"List\" cell")
   })
@@ -105,13 +105,13 @@ override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath:
 SwipyCell provides three delegate methods in order to track the users behaviors.
 ```swift
 // MARK: - SwipyCell Delegate
-  
+
   // When the user starts swiping the cell this method is called
   func swipeableTableViewCellDidStartSwiping(cell: SwipyCell) {}
-  
+
   // When the user ends swiping the cell this method is called
   func swipeableTableViewCellDidEndSwiping(cell: SwipyCell) {}
-  
+
   // When the user is dragging, this method is called with the percentage from the border
   func swipeableTableViewCell(cell: SwipyCell, didSwipeWithPercentage percentage: CGFloat) {}
 ```
