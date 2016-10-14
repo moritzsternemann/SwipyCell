@@ -22,21 +22,12 @@ class SwipyCellViewController: UITableViewController, SwipyCellDelegate {
     navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(SwipyCellViewController.reload))
     
     let backgroundView = UIView(frame: tableView.frame)
-    backgroundView.backgroundColor = UIColor.white
+    backgroundView.backgroundColor = .white
     tableView.backgroundView = backgroundView
     tableView.tableFooterView = UIView()
   }
-
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
-  }
   
 // MARK: - Table View Data Source
-  
-  override func numberOfSections(in tableView: UITableView) -> Int {
-    return 1
-  }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return numberItems
@@ -45,7 +36,7 @@ class SwipyCellViewController: UITableViewController, SwipyCellDelegate {
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = SwipyCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "cell")
     cell.selectionStyle = .gray
-    cell.contentView.backgroundColor = UIColor.white
+    cell.contentView.backgroundColor = .white
   
     configureCell(cell, forRowAtIndexPath: indexPath)
     
@@ -68,7 +59,7 @@ class SwipyCellViewController: UITableViewController, SwipyCellDelegate {
     cell.defaultColor = tableView.backgroundView?.backgroundColor
     cell.delegate = self
     
-    if (indexPath as NSIndexPath).row % initialNumberItems == 0 {
+    if indexPath.row % initialNumberItems == 0 {
       cell.textLabel?.text = "Switch Mode Cell"
       cell.detailTextLabel?.text = "Swipe to switch"
       
@@ -87,7 +78,7 @@ class SwipyCellViewController: UITableViewController, SwipyCellDelegate {
       cell.setSwipeGesture(listView, color: brownColor, mode: .switch, state: .State4, completionHandler: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
         print("Did swipe \"List\" cell")
       })
-    } else if (indexPath as NSIndexPath).row % initialNumberItems == 1 {
+    } else if indexPath.row % initialNumberItems == 1 {
       cell.textLabel?.text = "Exit Mode Cell"
       cell.detailTextLabel?.text = "Swipe to delete"
       
@@ -96,7 +87,7 @@ class SwipyCellViewController: UITableViewController, SwipyCellDelegate {
         
         self.deleteCell(cell)
       })
-    } else if (indexPath as NSIndexPath).row % initialNumberItems == 2 {
+    } else if indexPath.row % initialNumberItems == 2 {
       cell.textLabel?.text = "Mixed Mode Cell"
       cell.detailTextLabel?.text = "Swipe to switch or delete"
       
@@ -109,7 +100,7 @@ class SwipyCellViewController: UITableViewController, SwipyCellDelegate {
         
         self.deleteCell(cell)
       })
-    } else if (indexPath as NSIndexPath).row % initialNumberItems == 3 {
+    } else if indexPath.row % initialNumberItems == 3 {
       cell.textLabel?.text = "Un-animated Icons"
       cell.detailTextLabel?.text = "Swipe"
       cell.shouldAnimateIcons = false
@@ -123,7 +114,7 @@ class SwipyCellViewController: UITableViewController, SwipyCellDelegate {
         
         self.deleteCell(cell)
       })
-    } else if (indexPath as NSIndexPath).row % initialNumberItems == 4 {
+    } else if indexPath.row % initialNumberItems == 4 {
       cell.textLabel?.text = "Right swipe only"
       cell.detailTextLabel?.text = "Swipe"
       
@@ -134,7 +125,7 @@ class SwipyCellViewController: UITableViewController, SwipyCellDelegate {
       cell.setSwipeGesture(listView, color: brownColor, mode: .switch, state: .State4, completionHandler: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
         print("Did swipe \"List\" cell")
       })
-    } else if (indexPath as NSIndexPath).row % initialNumberItems == 5 {
+    } else if indexPath.row % initialNumberItems == 5 {
       cell.textLabel?.text = "Small triggers"
       cell.detailTextLabel?.text = "Using 10% and 50%"
       cell.firstTrigger = 0.1
@@ -149,7 +140,7 @@ class SwipyCellViewController: UITableViewController, SwipyCellDelegate {
         
         self.deleteCell(cell)
       })
-    } else if (indexPath as NSIndexPath).row % initialNumberItems == 6 {
+    } else if indexPath.row % initialNumberItems == 6 {
       cell.textLabel?.text = "Exit Mode Cell + Confirmation"
       cell.detailTextLabel?.text = "Swipe to delete"
       
