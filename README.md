@@ -21,6 +21,8 @@ The `.Exit` mode is the original behavior, known from the Mailbox app.
 The `.Switch` is another behavior where the cell will bounce back after swiping it.
 <p align="center"><img src="https://raw.githubusercontent.com/moritzsternemann/SwipyCell/master/github-assets/swipycell-switch.gif?raw=true" width="50%"/></p>
 
+You can also implement a second trigger (shown in the [Example](#Usage) below).
+
 ## Installation
 ### CocoaPods
 [CocoaPods](https://cocoapods.org) is a dependency manager for Cocoa projects.
@@ -29,7 +31,7 @@ $ gem install cocoapods
 ```
 To integrate SwipyCell into your project using CocoaPods, add it to your `Podfile`:
 ```
-pod 'SwipyCell', '~> 1.0.0'
+pod 'SwipyCell', '~> 2.0.0'
 ```
 Then run the following command:
 ```
@@ -47,7 +49,7 @@ $ brew install carthage
 
 To integrate SwipyCell into your project using Carthage, add it to your `Cartfile`:
 ```
-github "moritzsternemann/SwipyCell" >= 1.0.0
+github "moritzsternemann/SwipyCell" >= 2.0.0
 ```
 
 ### Manual
@@ -58,46 +60,46 @@ To do this clone the repo to your computer and drag the `SwipyCell.xcodeproj` in
 A complete example is available in the `Example` directory.
 The following code is a very basic example:
 ```swift
-override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-  let cell = SwipyCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "cell")
-  cell.selectionStyle = .Gray
-  cell.contentView.backgroundColor = UIColor.whiteColor()
+override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+	let cell = SwipyCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "cell")
+    cell.selectionStyle = .gray
+    cell.contentView.backgroundColor = UIColor.white
 
-  let checkView = viewWithImageName("check")
-  let greenColor = UIColor(red: 85.0 / 255.0, green: 213.0 / 255.0, blue: 80.0 / 255.0, alpha: 1.0)
+    let checkView = viewWithImageName("check")
+    let greenColor = UIColor(red: 85.0 / 255.0, green: 213.0 / 255.0, blue: 80.0 / 255.0, alpha: 1.0)
 
-  let crossView = viewWithImageName("cross")
-  let redColor = UIColor(red: 232.0 / 255.0, green: 61.0 / 255.0, blue: 14.0 / 255.0, alpha: 1.0)
+    let crossView = viewWithImageName("cross")
+    let redColor = UIColor(red: 232.0 / 255.0, green: 61.0 / 255.0, blue: 14.0 / 255.0, alpha: 1.0)
 
-  let clockView = viewWithImageName("clock")
-  let yellowColor = UIColor(red: 254.0 / 255.0, green: 217.0 / 255.0, blue: 56.0 / 255.0, alpha: 1.0)
+    let clockView = viewWithImageName("clock")
+    let yellowColor = UIColor(red: 254.0 / 255.0, green: 217.0 / 255.0, blue: 56.0 / 255.0, alpha: 1.0)
 
-  let listView = viewWithImageName("list")
-  let brownColor = UIColor(red: 206.0 / 255.0, green: 149.0 / 255.0, blue: 98.0 / 255.0, alpha: 1.0)
+    let listView = viewWithImageName("list")
+    let brownColor = UIColor(red: 206.0 / 255.0, green: 149.0 / 255.0, blue: 98.0 / 255.0, alpha: 1.0)
 
-  cell.defaultColor = tableView.backgroundView?.backgroundColor
-  cell.delegate = self
+    cell.defaultColor = tableView.backgroundView?.backgroundColor
+    cell.delegate = self
 
-  cell.textLabel?.text = "Switch Mode Cell"
-  cell.detailTextLabel?.text = "Swipe to switch"
+    cell.textLabel?.text = "Switch Mode Cell"
+    cell.detailTextLabel?.text = "Swipe to switch"
 
-  cell.setSwipeGesture(checkView, color: greenColor, mode: .Switch, state: .State1, completionHandler: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
-    print("Did swipe \"Checkmark\" cell")
-  })
+    cell.setSwipeGesture(checkView, color: greenColor, mode: .switch, state: .state1, completionHandler: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
+        print("Did swipe \"Checkmark\" cell")
+    })
 
-  cell.setSwipeGesture(crossView, color: redColor, mode: .Switch, state: .State2, completionHandler: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
-    print("Did swipe \"Cross\" cell")
-  })
+    cell.setSwipeGesture(crossView, color: redColor, mode: .switch, state: .state2, completionHandler: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
+        print("Did swipe \"Cross\" cell")
+    })
 
-  cell.setSwipeGesture(clockView, color: yellowColor, mode: .Switch, state: .State3, completionHandler: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
-    print("Did swipe \"Clock\" cell")
-  })
+    cell.setSwipeGesture(clockView, color: yellowColor, mode: .switch, state: .state3, completionHandler: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
+        print("Did swipe \"Clock\" cell")
+    })
 
-  cell.setSwipeGesture(listView, color: brownColor, mode: .Switch, state: .State4, completionHandler: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
-    print("Did swipe \"List\" cell")
-  })
-
-  return cell
+    cell.setSwipeGesture(listView, color: brownColor, mode: .switch, state: .state4, completionHandler: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
+        print("Did swipe \"List\" cell")
+    })
+        
+    return cell
 }
 ```
 
