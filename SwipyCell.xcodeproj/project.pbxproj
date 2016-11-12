@@ -13,7 +13,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1E2F13EE1DD6C3DA00174645 /* SwipyCell.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = SwipyCell.xcodeproj; sourceTree = "<group>"; };
 		8EB860821C98654900DB393C /* SwipyCell.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwipyCell.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EB8608D1C98658600DB393C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Source/Info.plist; sourceTree = SOURCE_ROOT; };
 		8EB8608F1C9865AD00DB393C /* SwipyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwipyCell.swift; path = Source/SwipyCell.swift; sourceTree = SOURCE_ROOT; };
@@ -32,25 +31,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1E2F13ED1DD6C3DA00174645 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				1E2F13EE1DD6C3DA00174645 /* SwipyCell.xcodeproj */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		1E2F13EF1DD6C3DA00174645 /* Products */ = {
-			isa = PBXGroup;
-			name = Products;
-			sourceTree = "<group>";
-		};
 		8EB860781C98654900DB393C = {
 			isa = PBXGroup;
 			children = (
 				8EB860841C98654900DB393C /* Source */,
 				8EB860831C98654900DB393C /* Products */,
-				1E2F13ED1DD6C3DA00174645 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -131,12 +116,6 @@
 			mainGroup = 8EB860781C98654900DB393C;
 			productRefGroup = 8EB860831C98654900DB393C /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 1E2F13EF1DD6C3DA00174645 /* Products */;
-					ProjectRef = 1E2F13EE1DD6C3DA00174645 /* SwipyCell.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				8EB860811C98654900DB393C /* SwipyCell */,
