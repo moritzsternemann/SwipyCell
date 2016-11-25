@@ -14,7 +14,7 @@ public protocol SwipyCellDelegate {
   func swipeableTableViewCell(_ cell: SwipyCell, didSwipeWithPercentage percentage: CGFloat)
 }
 
-public class SwipyCell: UITableViewCell {
+open class SwipyCell: UITableViewCell {
   
   fileprivate typealias `Self` = SwipyCell
   
@@ -119,7 +119,7 @@ public class SwipyCell: UITableViewCell {
   
 // MARK: - Prepare reuse
   
-  override public func prepareForReuse() {
+  override open func prepareForReuse() {
     super.prepareForReuse()
     
     uninstallSwipingView()
@@ -273,7 +273,7 @@ public class SwipyCell: UITableViewCell {
   
 // MARK: - UIGestureRecognizerDelegate
  
-  override public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+  override open func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
     guard let g = gestureRecognizer as? UIPanGestureRecognizer else { return false }
     
     let point = g.velocity(in: self)
