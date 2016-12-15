@@ -31,7 +31,7 @@ $ gem install cocoapods
 ```
 To integrate SwipyCell into your project using CocoaPods, add it to your `Podfile`:
 ```
-pod 'SwipyCell', '~> 2.0.0'
+pod 'SwipyCell', :git => 'https://github.com/moritzsternemann/SwipyCell.git', :tag => '2.0.1'
 ```
 Then run the following command:
 ```
