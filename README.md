@@ -14,11 +14,11 @@ SwipyCell
 
 ## Preview
 ### Exit Mode
-The `.Exit` mode is the original behavior, known from the Mailbox app.
+The `.exit` mode is the original behavior, known from the Mailbox app.
 <p align="center"><img src="https://raw.githubusercontent.com/moritzsternemann/SwipyCell/master/github-assets/swipycell-exit.gif?raw=true" width="50%"/></p>
 
 ### Exit Mode
-The `.Switch` is another behavior where the cell will bounce back after swiping it.
+The `.switch` is another behavior where the cell will bounce back after swiping it.
 <p align="center"><img src="https://raw.githubusercontent.com/moritzsternemann/SwipyCell/master/github-assets/swipycell-switch.gif?raw=true" width="50%"/></p>
 
 You can also implement a second trigger (shown in the [Example](#Usage) below).
@@ -126,7 +126,7 @@ cell.secondTrigger = 0.5  // Default: 75% (0.75)
 ```
 
 ## Resetting the cell position
-You can animate the cell back to it's default position when using `.Exit` mode using the `swipeToOrigin(_:)` method. This could be useful if your app asks the user for confirmation and the user want's to cancel the action.
+You can animate the cell back to it's default position when using `.exit` mode using the `swipeToOrigin(_:)` method. This could be useful if your app asks the user for confirmation and the user want's to cancel the action.
 ```swift
 cell.swipeToOrigin {
   print("Swiped back")
