@@ -133,17 +133,7 @@ open class SwipyCell: UITableViewCell {
       return
     }
     
-    let isContentViewBackgroundClear = (contentView.backgroundColor != nil)
-    if isContentViewBackgroundClear {
-      let isBackgroundClear = (backgroundColor == UIColor.clear)
-      contentView.backgroundColor = isBackgroundClear ? UIColor.white : backgroundColor
-    }
-    
     let contentViewScreenshotImage = imageWithView(self)
-    
-    if isContentViewBackgroundClear {
-      contentView.backgroundColor = nil
-    }
     
     colorIndicatorView = UIView(frame: self.bounds)
     colorIndicatorView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
