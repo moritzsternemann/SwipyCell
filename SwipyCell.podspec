@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "SwipyCell"
-  s.version      = "2.0.1"
+  s.version      = "2.0.2"
   s.summary      = "Easy to use UITableViewCell implementing swiping to trigger actions (known from the Mailbox App)"
   s.homepage     = "https://github.com/moritzsternemann/SwipyCell"
   s.license      = { :type => "MIT", :file => "LICENSE" }
