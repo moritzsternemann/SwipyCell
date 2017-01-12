@@ -56,10 +56,10 @@ open class SwipyCell: UITableViewCell {
   var modeForState2: SwipyCellMode!
   var modeForState3: SwipyCellMode!
   var modeForState4: SwipyCellMode!
-  var color1: UIColor!
-  var color2: UIColor!
-  var color3: UIColor!
-  var color4: UIColor!
+  public var color1: UIColor!
+  public var color2: UIColor!
+  public var color3: UIColor!
+  public var color4: UIColor!
   var view1: UIView!
   var view2: UIView!
   var view3: UIView!
