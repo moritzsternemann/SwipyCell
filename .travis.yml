@@ -5,6 +5,10 @@ xcode_scheme: SwipyCell
 osx_image: xcode8
 xcode_sdk: iphonesimulator10.0
 
+branches:
+  except:
+    - develop
+
 before_install:
   - gem update cocoapods
   - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
