@@ -61,7 +61,7 @@ A complete example is available in the `Example` directory.
 The following code is a very basic example:
 ```swift
 override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-	let cell = SwipyCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "cell")
+	let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SwipyCell
     cell.selectionStyle = .gray
     cell.contentView.backgroundColor = UIColor.white
 
