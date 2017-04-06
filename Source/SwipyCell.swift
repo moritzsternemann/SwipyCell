@@ -28,7 +28,7 @@ open class SwipyCell: UITableViewCell {
     static let msBounceDuration2    = 0.1  // Duration of the second part of the bounce animation
     static let msDurationLowLimit   = 0.25 // Lowest duration when swiping the cell because we try to simulate velocity
     static let msDurationHighLimit  = 0.1  // Highest duration when swiping the cell because we try to simulate velocity
-    public typealias MSSwipeCompletionBlock = (SwipyCell, SwipyCellState, SwipyCellMode) -> ()
+    public typealias SwipyCellTriggerBlock = (SwipyCell, SwipyCellState, SwipyCellMode) -> ()
     
     public var delegate: SwipyCellDelegate?
     var direction: SwipyCellDirection!
@@ -48,10 +48,10 @@ open class SwipyCell: UITableViewCell {
     var velocity: CGFloat!
     var animationDuration: TimeInterval!
     public var defaultColor: UIColor!
-    var completionBlock1: MSSwipeCompletionBlock?
-    var completionBlock2: MSSwipeCompletionBlock?
-    var completionBlock3: MSSwipeCompletionBlock?
-    var completionBlock4: MSSwipeCompletionBlock?
+    public var completionBlock1: SwipyCellTriggerBlock?
+    public var completionBlock2: SwipyCellTriggerBlock?
+    public var completionBlock3: SwipyCellTriggerBlock?
+    public var completionBlock4: SwipyCellTriggerBlock?
     var modeForState1: SwipyCellMode!
     var modeForState2: SwipyCellMode!
     var modeForState3: SwipyCellMode!
