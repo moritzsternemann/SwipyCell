@@ -8,16 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		8EB860911C9865AD00DB393C /* SwipyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB8608F1C9865AD00DB393C /* SwipyCell.swift */; };
-		8EB860921C9865AD00DB393C /* SwipyCellEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB860901C9865AD00DB393C /* SwipyCellEnums.swift */; };
 		8EB860DF1C986DD000DB393C /* SwipyCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 8EB860DE1C986DD000DB393C /* SwipyCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8ECA9C1A1E970383006A3761 /* SwipyCellTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECA9C191E970383006A3761 /* SwipyCellTypes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8EB860821C98654900DB393C /* SwipyCell.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwipyCell.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EB8608D1C98658600DB393C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Source/Info.plist; sourceTree = SOURCE_ROOT; };
 		8EB8608F1C9865AD00DB393C /* SwipyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwipyCell.swift; path = Source/SwipyCell.swift; sourceTree = SOURCE_ROOT; };
-		8EB860901C9865AD00DB393C /* SwipyCellEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwipyCellEnums.swift; path = Source/SwipyCellEnums.swift; sourceTree = SOURCE_ROOT; };
 		8EB860DE1C986DD000DB393C /* SwipyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SwipyCell.h; path = Source/SwipyCell.h; sourceTree = SOURCE_ROOT; };
+		8ECA9C191E970383006A3761 /* SwipyCellTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwipyCellTypes.swift; path = Source/SwipyCellTypes.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +53,7 @@
 				8EB860DE1C986DD000DB393C /* SwipyCell.h */,
 				8EB8608D1C98658600DB393C /* Info.plist */,
 				8EB8608F1C9865AD00DB393C /* SwipyCell.swift */,
-				8EB860901C9865AD00DB393C /* SwipyCellEnums.swift */,
+				8ECA9C191E970383006A3761 /* SwipyCellTypes.swift */,
 			);
 			name = Source;
 			path = SwipyCell;
@@ -139,7 +139,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8EB860911C9865AD00DB393C /* SwipyCell.swift in Sources */,
-				8EB860921C9865AD00DB393C /* SwipyCellEnums.swift in Sources */,
+				8ECA9C1A1E970383006A3761 /* SwipyCellTypes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
