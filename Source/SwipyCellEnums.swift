@@ -27,5 +27,5 @@ public struct SwipyCellState: OptionSet {
 public enum SwipyCellMode: UInt {
     case none = 0
     case exit
-    case `switch`
+    case toggle
 }
