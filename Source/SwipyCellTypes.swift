@@ -6,7 +6,77 @@
 //  Copyright © 2016 Moritz Sternemann. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+fileprivate struct Defaults {
+    static let stop1: CGFloat               = 0.25  // Percentage limit to trigger the first action
+    static let stop2: CGFloat               = 0.75  // Percentage limit to trigger the second action
+    static let swipeViewPadding: CGFloat    = 24.0  // Padding of the swipe view (space between cell and swipe view)
+    static let shouldAnimateSlideViews      = true
+    static let defaultSlideViewColor        = UIColor.white
+}
+
+public typealias SwipyCellTriggerBlock = (SwipyCell, SwipyCellState, SwipyCellMode) -> Void
+public typealias SwipyCellTriggerPointList = [CGFloat: SwipyCellState]
+
+public protocol SwipyCellDelegate {
+    func swipyCellDidStartSwiping(_ cell: SwipyCell)
+    func swipyCellDidFinishSwiping(_ cell: SwipyCell)
+    func swipyCell(_ cell: SwipyCell, didSwipeWithPercentage percentage: CGFloat)
+}
+
+public struct SwipyCellTrigger {
+    init(mode: SwipyCellMode, color: UIColor, view: UIView, block: SwipyCellTriggerBlock?) {
+        self.mode = mode
+        self.color = color
+        self.view = view
+        self.block = block
+    }
+    
+    var mode: SwipyCellMode
+    var color: UIColor
+    var view: UIView
+    var block: SwipyCellTriggerBlock?
+    
+    func executeTriggerBlock(withSwipyCell cell: SwipyCell, state: SwipyCellState) {
+        block?(cell, state, mode)
+    }
+}
+
+public enum SwipyCellState: Hashable {
+    case none
+    case state(Int, SwipyCellDirection)
+    
+    public var hashValue: Int {
+        return self.toInt()
+    }
+    
+    static public func ==(lhs: SwipyCellState, rhs: SwipyCellState) -> Bool {
+        return lhs.toInt() == rhs.toInt()
+    }
+
+    private func toInt() -> Int {
+        switch self {
+        case .none:
+            return 0
+        case .state(let stateNum, let stateDirection):
+            // add one because state(0,...) would always be 0
+            if stateDirection == .left {
+                return stateNum + 1
+            } else if stateDirection == .right {
+                return -(stateNum + 1)
+            }
+        }
+        
+        return 0
+    }
+}
+
+public enum SwipyCellMode: UInt {
+    case none = 0
+    case exit
+    case toggle
+}
 
 public enum SwipyCellDirection: UInt {
     case left = 0
@@ -14,18 +84,23 @@ public enum SwipyCellDirection: UInt {
     case right
 }
 
-public struct SwipyCellState: OptionSet {
-    public let rawValue: Int
-    public init(rawValue: Int) { self.rawValue = rawValue }
-    public static let none = SwipyCellState(rawValue: 0)
-    public static let state1 = SwipyCellState(rawValue: (1 << 0))
-    public static let state2 = SwipyCellState(rawValue: (1 << 1))
-    public static let state3 = SwipyCellState(rawValue: (1 << 2))
-    public static let state4 = SwipyCellState(rawValue: (1 << 3))
-}
-
-public enum SwipyCellMode: UInt {
-    case none = 0
-    case exit
-    case toggle
+public struct SwipyCellConfig {
+    static let shared = SwipyCellConfig()
+    
+    var triggerPoints: SwipyCellTriggerPointList
+    var swipeViewPadding: CGFloat
+    var shouldAnimateSlideViews: Bool
+    var defaultSlideViewColor: UIColor
+    
+    init() {
+        triggerPoints = [:]
+        triggerPoints[Defaults.stop1] = .state(0, .left)
+        triggerPoints[Defaults.stop2] = .state(1, .left)
+        triggerPoints[-Defaults.stop1] = .state(0, .right)
+        triggerPoints[-Defaults.stop2] = .state(1, .right)
+        
+        swipeViewPadding = Defaults.swipeViewPadding
+        shouldAnimateSlideViews = Defaults.shouldAnimateSlideViews
+        defaultSlideViewColor = Defaults.defaultSlideViewColor
+    }
 }

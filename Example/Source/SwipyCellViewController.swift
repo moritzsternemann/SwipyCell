@@ -72,26 +72,26 @@ class SwipyCellViewController: UITableViewController, SwipyCellDelegate {
             cell.textLabel?.text = "Switch Mode Cell"
             cell.detailTextLabel?.text = "Swipe to switch"
             
-            cell.setSwipeGesture(withSwipeView: checkView, color: greenColor, mode: .toggle, state: .state1, completion: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
+            cell.addSwipeTrigger(forState: .state(0, .left), withMode: .toggle, swipeView: checkView, swipeColor: greenColor, completion: { cell, state, mode in
                 print("Did swipe \"Checkmark\" cell")
             })
             
-            cell.setSwipeGesture(withSwipeView: crossView, color: redColor, mode: .toggle, state: .state2, completion: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
+            cell.addSwipeTrigger(forState: .state(1, .left), withMode: .toggle, swipeView: crossView, swipeColor: redColor, completion: { cell, state, mode in
                 print("Did swipe \"Cross\" cell")
             })
             
-            cell.setSwipeGesture(withSwipeView: clockView, color: yellowColor, mode: .toggle, state: .state3, completion: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
+            cell.addSwipeTrigger(forState: .state(0, .right), withMode: .toggle, swipeView: clockView, swipeColor: yellowColor, completion: { cell, state, mode in
                 print("Did swipe \"Clock\" cell")
             })
             
-            cell.setSwipeGesture(withSwipeView: listView, color: brownColor, mode: .toggle, state: .state4, completion: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
+            cell.addSwipeTrigger(forState: .state(1, .right), withMode: .toggle, swipeView: listView, swipeColor: brownColor, completion: { cell, state, mode in
                 print("Did swipe \"List\" cell")
             })
         } else if indexPath.row % initialNumberItems == 1 {
             cell.textLabel?.text = "Exit Mode Cell"
             cell.detailTextLabel?.text = "Swipe to delete"
             
-            cell.setSwipeGesture(withSwipeView: crossView, color: redColor, mode: .exit, state: .state1, completion: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
+            cell.addSwipeTrigger(forState: .state(0, .left), withMode: .exit, swipeView: crossView, swipeColor: redColor, completion: { cell, state, mode in
                 print("Did swipe \"Cross\" cell")
                 
                 self.deleteCell(cell)
@@ -100,11 +100,11 @@ class SwipyCellViewController: UITableViewController, SwipyCellDelegate {
             cell.textLabel?.text = "Mixed Mode Cell"
             cell.detailTextLabel?.text = "Swipe to switch or delete"
             
-            cell.setSwipeGesture(withSwipeView: checkView, color: greenColor, mode: .toggle, state: .state1, completion: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
+            cell.addSwipeTrigger(forState: .state(0, .left), withMode: .toggle, swipeView: checkView, swipeColor: greenColor, completion: { cell, state, mode in
                 print("Did swipe \"Checkmark\" cell")
             })
             
-            cell.setSwipeGesture(withSwipeView: crossView, color: redColor, mode: .exit, state: .state2, completion: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
+            cell.addSwipeTrigger(forState: .state(1, .left), withMode: .exit, swipeView: crossView, swipeColor: redColor, completion: { cell, state, mode in
                 print("Did swipe \"Cross\" cell")
                 
                 self.deleteCell(cell)
@@ -112,13 +112,13 @@ class SwipyCellViewController: UITableViewController, SwipyCellDelegate {
         } else if indexPath.row % initialNumberItems == 3 {
             cell.textLabel?.text = "Un-animated Icons"
             cell.detailTextLabel?.text = "Swipe"
-            cell.shouldAnimateIcons = false
+            cell.shouldAnimateSlideViews = false
             
-            cell.setSwipeGesture(withSwipeView: checkView, color: greenColor, mode: .toggle, state: .state1, completion: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
+            cell.addSwipeTrigger(forState: .state(0, .left), withMode: .toggle, swipeView: checkView, swipeColor: greenColor, completion: { cell, state, mode in
                 print("Did swipe \"Checkmark\" cell")
             })
             
-            cell.setSwipeGesture(withSwipeView: crossView, color: redColor, mode: .exit, state: .state2, completion: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
+            cell.addSwipeTrigger(forState: .state(1, .left), withMode: .exit, swipeView: crossView, swipeColor: redColor, completion: { cell, state, mode in
                 print("Did swipe \"Cross\" cell")
                 
                 self.deleteCell(cell)
@@ -127,24 +127,23 @@ class SwipyCellViewController: UITableViewController, SwipyCellDelegate {
             cell.textLabel?.text = "Right swipe only"
             cell.detailTextLabel?.text = "Swipe"
             
-            cell.setSwipeGesture(withSwipeView: clockView, color: yellowColor, mode: .toggle, state: .state3, completion: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
+            cell.addSwipeTrigger(forState: .state(0, .right), withMode: .toggle, swipeView: clockView, swipeColor: yellowColor, completion: { cell, state, mode in
                 print("Did swipe \"Clock\" cell")
             })
             
-            cell.setSwipeGesture(withSwipeView: listView, color: brownColor, mode: .toggle, state: .state4, completion: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
+            cell.addSwipeTrigger(forState: .state(1, .right), withMode: .toggle, swipeView: listView, swipeColor: brownColor, completion: { cell, state, mode in
                 print("Did swipe \"List\" cell")
             })
         } else if indexPath.row % initialNumberItems == 5 {
             cell.textLabel?.text = "Small triggers"
             cell.detailTextLabel?.text = "Using 10% and 50%"
-            cell.firstTrigger = 0.1
-            cell.secondTrigger = 0.5
+            cell.setTriggerPoints(points: [0.1, 0.5])
             
-            cell.setSwipeGesture(withSwipeView: checkView, color: greenColor, mode: .toggle, state: .state1, completion: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
+            cell.addSwipeTrigger(forState: .state(0, .left), withMode: .toggle, swipeView: checkView, swipeColor: greenColor, completion: { cell, state, mode in
                 print("Did swipe \"Checkmark\" cell")
             })
             
-            cell.setSwipeGesture(withSwipeView: crossView, color: redColor, mode: .exit, state: .state2, completion: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
+            cell.addSwipeTrigger(forState: .state(1, .left), withMode: .exit, swipeView: crossView, swipeColor: redColor, completion: { cell, state, mode in
                 print("Did swipe \"Cross\" cell")
                 
                 self.deleteCell(cell)
@@ -153,7 +152,7 @@ class SwipyCellViewController: UITableViewController, SwipyCellDelegate {
             cell.textLabel?.text = "Exit Mode Cell + Confirmation"
             cell.detailTextLabel?.text = "Swipe to delete"
             
-            cell.setSwipeGesture(withSwipeView: crossView, color: redColor, mode: .exit, state: .state1, completion: { (cell: SwipyCell, state: SwipyCellState, mode: SwipyCellMode) in
+            cell.addSwipeTrigger(forState: .state(0, .left), withMode: .exit, swipeView: crossView, swipeColor: redColor, completion: { cell, state, mode in
                 print("Did swipe \"Cross\" cell")
                 
                 self.cellToDelete = cell
@@ -182,27 +181,20 @@ class SwipyCellViewController: UITableViewController, SwipyCellDelegate {
         return 70.0
     }
     
-    // MARK: - Table View Delegate
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let tableViewController = SwipyCellViewController()
-        self.navigationController?.pushViewController(tableViewController, animated: true)
-    }
-    
     // MARK: - SwipyCell Delegate
     
     // When the user starts swiping the cell this method is called
-    func swipeableTableViewCellDidStartSwiping(_ cell: SwipyCell) {
+    func swipyCellDidStartSwiping(_ cell: SwipyCell) {
         
     }
     
     // When the user ends swiping the cell this method is called
-    func swipeableTableViewCellDidEndSwiping(_ cell: SwipyCell) {
+    func swipyCellDidFinishSwiping(_ cell: SwipyCell) {
         
     }
     
     // When the user is dragging, this method is called with the percentage from the border
-    func swipeableTableViewCell(_ cell: SwipyCell, didSwipeWithPercentage percentage: CGFloat) {
+    func swipyCell(_ cell: SwipyCell, didSwipeWithPercentage percentage: CGFloat) {
         
     }
     
