@@ -112,7 +112,7 @@ class SwipyCellViewController: UITableViewController, SwipyCellDelegate {
         } else if indexPath.row % initialNumberItems == 3 {
             cell.textLabel?.text = "Un-animated Icons"
             cell.detailTextLabel?.text = "Swipe"
-            cell.shouldAnimateSlideViews = false
+            cell.shouldAnimateSwipeViews = false
             
             cell.addSwipeTrigger(forState: .state(0, .left), withMode: .toggle, swipeView: checkView, swipeColor: greenColor, completion: { cell, state, mode in
                 print("Did swipe \"Checkmark\" cell")

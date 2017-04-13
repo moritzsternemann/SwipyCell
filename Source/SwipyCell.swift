@@ -21,7 +21,7 @@ fileprivate struct Constants {
 
 open class SwipyCell: UITableViewCell, SwipyCellTriggerPointEditable {    
     public var delegate: SwipyCellDelegate?
-    public var shouldAnimateSlideViews: Bool!
+    public var shouldAnimateSwipeViews: Bool!
     public var defaultColor: UIColor!
     public var swipeViewPadding: CGFloat!
     
@@ -75,9 +75,9 @@ open class SwipyCell: UITableViewCell, SwipyCellTriggerPointEditable {
     
     func initDefaults() {
         let cfg = SwipyCellConfig.shared
-        shouldAnimateSlideViews = cfg.shouldAnimateSlideViews
+        shouldAnimateSwipeViews = cfg.shouldAnimateSwipeViews
         
-        defaultColor = cfg.defaultSlideViewColor
+        defaultColor = cfg.defaultSwipeViewColor
         
         swipeViewPadding = SwipyCellConfig.shared.swipeViewPadding
         
@@ -356,7 +356,7 @@ open class SwipyCell: UITableViewCell, SwipyCellTriggerPointEditable {
         if let view = view {
             setView(ofSlidingView: view)
             slidingView.alpha = swipeAlpha(withPercentage: percentage)
-            slideSwipeView(withPercentage: percentage, view: view, isDragging: shouldAnimateSlideViews)
+            slideSwipeView(withPercentage: percentage, view: view, isDragging: shouldAnimateSwipeViews)
         }
         
         let color = swipeColor(withSwipeState: state)
@@ -427,7 +427,7 @@ open class SwipyCell: UITableViewCell, SwipyCellTriggerPointEditable {
         UIView.animate(withDuration: duration, delay: 0, options: [.curveEaseOut, .allowUserInteraction], animations: {
             self.contentScreenshotView?.frame = frame
             self.slidingView.alpha = 0
-            self.slideSwipeView(withPercentage: percentage, view: self.activeView, isDragging: self.shouldAnimateSlideViews)
+            self.slideSwipeView(withPercentage: percentage, view: self.activeView, isDragging: self.shouldAnimateSwipeViews)
         }, completion: { _ in
             self.executeTriggerBlock()
         })

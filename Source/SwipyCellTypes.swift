@@ -12,8 +12,8 @@ fileprivate struct Defaults {
     static let stop1: CGFloat               = 0.25  // Percentage limit to trigger the first action
     static let stop2: CGFloat               = 0.75  // Percentage limit to trigger the second action
     static let swipeViewPadding: CGFloat    = 24.0  // Padding of the swipe view (space between cell and swipe view)
-    static let shouldAnimateSlideViews      = true
-    static let defaultSlideViewColor        = UIColor.white
+    static let shouldAnimateSwipeViews      = true
+    static let defaultSwipeViewColor        = UIColor.white
 }
 
 public typealias SwipyCellTriggerBlock = (SwipyCell, SwipyCellState, SwipyCellMode) -> Void
@@ -146,8 +146,8 @@ public class SwipyCellConfig: SwipyCellTriggerPointEditable {
     
     internal var triggerPoints: [CGFloat: SwipyCellState]
     var swipeViewPadding: CGFloat
-    var shouldAnimateSlideViews: Bool
-    var defaultSlideViewColor: UIColor
+    var shouldAnimateSwipeViews: Bool
+    var defaultSwipeViewColor: UIColor
     
     init() {
         triggerPoints = [:]
@@ -157,7 +157,7 @@ public class SwipyCellConfig: SwipyCellTriggerPointEditable {
         triggerPoints[-Defaults.stop2] = .state(1, .right)
         
         swipeViewPadding = Defaults.swipeViewPadding
-        shouldAnimateSlideViews = Defaults.shouldAnimateSlideViews
-        defaultSlideViewColor = Defaults.defaultSlideViewColor
+        shouldAnimateSwipeViews = Defaults.shouldAnimateSwipeViews
+        defaultSwipeViewColor = Defaults.defaultSwipeViewColor
     }
 }
