@@ -287,16 +287,18 @@ open class SwipyCell: UITableViewCell, SwipyCellTriggerPointEditable {
             }
             if percentage > 0 {
                 let nextKey = (keys.count > i + 1) ? keys[i + 1] : 1
+                let nextStateAvailable = (triggers[triggerPoints[nextKey] ?? .none] != nil)
                 
                 // positive trigger matches
-                if (percentage >= key && percentage < nextKey) || (percentage < firstLeftTrigger && key == firstLeftTrigger) {
+                if (percentage >= key && (!nextStateAvailable || percentage < nextKey)) || (percentage < firstLeftTrigger && key == firstLeftTrigger) {
                     return triggerPoints[key] ?? .none
                 }
             } else { // percentage < 0
                 let nextKey = (i - 1 >= 0) ? keys[i - 1] : -1
+                let nextStateAvailable = (triggers[triggerPoints[nextKey] ?? .none] != nil)
                 
                 // negative trigger matches
-                if (percentage <= key && percentage > nextKey) || (percentage > firstRightTrigger && key == firstRightTrigger) {
+                if (percentage <= key && (!nextStateAvailable || percentage > nextKey)) || (percentage > firstRightTrigger && key == firstRightTrigger) {
                     return triggerPoints[key] ?? .none
                 }
             }
@@ -352,6 +354,7 @@ open class SwipyCell: UITableViewCell, SwipyCellTriggerPointEditable {
         let percentage = swipePercentage(withOffset: offset, relativeToWidth: bounds.width)
         let state = swipeState(withPercentage: percentage)
         let view = swipeView(withSwipeState: state)
+        print(percentage, state)
         
         if let view = view {
             setView(ofSlidingView: view)
