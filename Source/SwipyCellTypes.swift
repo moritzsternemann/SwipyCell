@@ -17,7 +17,6 @@ fileprivate struct Defaults {
 }
 
 public typealias SwipyCellTriggerBlock = (SwipyCell, SwipyCellState, SwipyCellMode) -> Void
-public typealias SwipyCellTriggerPointList = [CGFloat: SwipyCellState]
 
 public protocol SwipyCellDelegate {
     func swipyCellDidStartSwiping(_ cell: SwipyCell)
@@ -87,7 +86,7 @@ public enum SwipyCellDirection: UInt {
 public struct SwipyCellConfig {
     static let shared = SwipyCellConfig()
     
-    var triggerPoints: SwipyCellTriggerPointList
+    var triggerPoints: [CGFloat: SwipyCellState]
     var swipeViewPadding: CGFloat
     var shouldAnimateSlideViews: Bool
     var defaultSlideViewColor: UIColor
