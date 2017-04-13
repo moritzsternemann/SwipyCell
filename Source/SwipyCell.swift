@@ -316,10 +316,10 @@ open class SwipyCell: UITableViewCell, SwipyCellTriggerPointEditable {
     func swipeAlpha(withPercentage percentage: CGFloat) -> CGFloat {
         var alpha: CGFloat = 1.0
         
-        if percentage >= 0 && percentage < firstRightTrigger {
-            alpha = percentage / firstRightTrigger
-        } else if percentage < 0 && percentage > firstLeftTrigger {
-            alpha = fabs(percentage / fabs(firstLeftTrigger))
+        if percentage >= 0 && percentage < firstLeftTrigger {
+            alpha = percentage / firstLeftTrigger
+        } else if percentage < 0 && percentage > firstRightTrigger {
+            alpha = fabs(percentage / fabs(firstRightTrigger))
         }
         
         return alpha
