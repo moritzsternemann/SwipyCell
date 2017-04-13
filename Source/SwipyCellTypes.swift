@@ -91,6 +91,7 @@ protocol SwipyCellTriggerPointEditable: class {
     func setTriggerPoints(_ points: [CGFloat: SwipyCellState])
     func setTriggerPoints(_ points: [CGFloat: Int])
     func setTriggerPoints(points: [CGFloat])
+    func getTriggerPoints() -> [CGFloat: SwipyCellState]
     func clearTriggerPoints()
 }
 extension SwipyCellTriggerPointEditable {
@@ -131,6 +132,10 @@ extension SwipyCellTriggerPointEditable {
         }
     }
     
+    public func getTriggerPoints() -> [CGFloat: SwipyCellState] {
+        return triggerPoints
+    }
+    
     public func clearTriggerPoints() {
         triggerPoints = [:]
     }
@@ -139,7 +144,7 @@ extension SwipyCellTriggerPointEditable {
 public class SwipyCellConfig: SwipyCellTriggerPointEditable {
     static let shared = SwipyCellConfig()
     
-    var triggerPoints: [CGFloat: SwipyCellState]
+    internal var triggerPoints: [CGFloat: SwipyCellState]
     var swipeViewPadding: CGFloat
     var shouldAnimateSlideViews: Bool
     var defaultSlideViewColor: UIColor
