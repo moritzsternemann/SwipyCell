@@ -83,7 +83,60 @@ public enum SwipyCellDirection: UInt {
     case right
 }
 
-public struct SwipyCellConfig {
+protocol SwipyCellTriggerPointEditable: class {
+    var triggerPoints: [CGFloat: SwipyCellState] { get set }
+    
+    func setTriggerPoint(forState state: SwipyCellState, at point: CGFloat)
+    func setTriggerPoint(forIndex index: Int, at point: CGFloat)
+    func setTriggerPoints(_ points: [CGFloat: SwipyCellState])
+    func setTriggerPoints(_ points: [CGFloat: Int])
+    func setTriggerPoints(points: [CGFloat])
+    func clearTriggerPoints()
+}
+extension SwipyCellTriggerPointEditable {
+    
+    public func setTriggerPoint(forState state: SwipyCellState, at point: CGFloat) {
+        var p = fabs(point)
+        if case .state(_, let direction) = state, direction == .right {
+            p = -p
+        }
+        triggerPoints[p] = state
+    }
+    
+    public func setTriggerPoint(forIndex index: Int, at point: CGFloat) {
+        let p = fabs(point)
+        triggerPoints[p] = SwipyCellState.state(index, .left)
+        triggerPoints[-p] = SwipyCellState.state(index, .right)
+    }
+    
+    public func setTriggerPoints(_ points: [CGFloat: SwipyCellState]) {
+        triggerPoints = points
+    }
+    
+    public func setTriggerPoints(_ points: [CGFloat: Int]) {
+        triggerPoints = [:]
+        _ = points.map { point, index in
+            let p = fabs(point)
+            triggerPoints[p] = SwipyCellState.state(index, .left)
+            triggerPoints[-p] = SwipyCellState.state(index, .right)
+        }
+    }
+    
+    public func setTriggerPoints(points: [CGFloat]) {
+        triggerPoints = [:]
+        for (index, point) in points.enumerated() {
+            let p = fabs(point)
+            triggerPoints[p] = SwipyCellState.state(index, .left)
+            triggerPoints[-p] = SwipyCellState.state(index, .right)
+        }
+    }
+    
+    public func clearTriggerPoints() {
+        triggerPoints = [:]
+    }
+}
+
+public class SwipyCellConfig: SwipyCellTriggerPointEditable {
     static let shared = SwipyCellConfig()
     
     var triggerPoints: [CGFloat: SwipyCellState]

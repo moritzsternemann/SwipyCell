@@ -19,8 +19,7 @@ fileprivate struct Constants {
     static let durationHighLimit            = 0.1   // Highest duration when swiping the cell because we try to simulate velocity
 }
 
-open class SwipyCell: UITableViewCell {
-    
+open class SwipyCell: UITableViewCell, SwipyCellTriggerPointEditable {    
     public var delegate: SwipyCellDelegate?
     public var shouldAnimateSlideViews: Bool!
     public var defaultColor: UIColor!
@@ -116,46 +115,6 @@ open class SwipyCell: UITableViewCell {
     
     public func addSwipeTrigger(forState state: SwipyCellState, withMode mode: SwipyCellMode, swipeView view: UIView, swipeColor color: UIColor, completion block: SwipyCellTriggerBlock?) {
         triggers[state] = SwipyCellTrigger(mode: mode, color: color, view: view, block: block)
-    }
-    
-    public func setTriggerPoint(forState state: SwipyCellState, at point: CGFloat) {
-        var p = fabs(point)
-        if case .state(_, let direction) = state, direction == .right {
-            p = -p
-        }
-        triggerPoints[p] = state
-    }
-    
-    public func setTriggerPoint(forIndex index: Int, at point: CGFloat) {
-        let p = fabs(point)
-        triggerPoints[p] = SwipyCellState.state(index, .left)
-        triggerPoints[-p] = SwipyCellState.state(index, .right)
-    }
-    
-    public func setTriggerPoints(_ points: [CGFloat: SwipyCellState]) {
-        triggerPoints = points
-    }
-    
-    public func setTriggerPoints(_ points: [CGFloat: Int]) {
-        triggerPoints = [:]
-        _ = points.map { point, index in
-            let p = fabs(point)
-            triggerPoints[p] = SwipyCellState.state(index, .left)
-            triggerPoints[-p] = SwipyCellState.state(index, .right)
-        }
-    }
-    
-    public func setTriggerPoints(points: [CGFloat]) {
-        triggerPoints = [:]
-        for (index, point) in points.enumerated() {
-            let p = fabs(point)
-            triggerPoints[p] = SwipyCellState.state(index, .left)
-            triggerPoints[-p] = SwipyCellState.state(index, .right)
-        }
-    }
-    
-    public func clearTriggerPoints() {
-        triggerPoints = [:]
     }
 
     
