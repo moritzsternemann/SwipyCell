@@ -122,6 +122,12 @@ open class SwipyCell: UITableViewCell, SwipyCellTriggerPointEditable {
         
         triggers[state]?.block = block
     }
+    
+    public func setCompletionBlocks(_ block: SwipyCellTriggerBlock?) {
+        for trigger in triggers {
+            triggers[trigger.key]?.block = block
+        }
+    }
 
     
 // MARK: - Prepare reuse
