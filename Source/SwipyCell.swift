@@ -116,6 +116,12 @@ open class SwipyCell: UITableViewCell, SwipyCellTriggerPointEditable {
     public func addSwipeTrigger(forState state: SwipyCellState, withMode mode: SwipyCellMode, swipeView view: UIView, swipeColor color: UIColor, completion block: SwipyCellTriggerBlock?) {
         triggers[state] = SwipyCellTrigger(mode: mode, color: color, view: view, block: block)
     }
+    
+    public func setCompletionBlock(forState state: SwipyCellState, _ block: @escaping SwipyCellTriggerBlock) {
+        guard triggers[state] != nil else { return }
+        
+        triggers[state]?.block = block
+    }
 
     
 // MARK: - Prepare reuse
