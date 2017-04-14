@@ -8,7 +8,7 @@
 
 import UIKit
 
-fileprivate struct Constants {
+fileprivate struct SwipyCellConstants {
     static let bounceAmplitude              = 20.0  // Maximum bounce amplitude whe using the switch mode
     static let damping: CGFloat             = 0.6   // Damping of the spring animation
     static let velocity: CGFloat            = 0.9   // Velocity of the spring animation
@@ -85,9 +85,9 @@ open class SwipyCell: UITableViewCell, SwipyCellTriggerPointEditable {
         isDragging = false
         shouldDrag = true
         
-        damping = Constants.damping
-        velocity = Constants.velocity
-        animationDuration = Constants.animationDuration
+        damping = SwipyCellConstants.damping
+        velocity = SwipyCellConstants.velocity
+        animationDuration = SwipyCellConstants.animationDuration
         
         activeView = nil
         
@@ -245,7 +245,7 @@ open class SwipyCell: UITableViewCell, SwipyCellTriggerPointEditable {
     
     func viewAnimationDuration(withVelocity velocity: CGPoint) -> TimeInterval {
         let width = bounds.width
-        let animationDurationDiff = Constants.durationHighLimit - Constants.durationLowLimit
+        let animationDurationDiff = SwipyCellConstants.durationHighLimit - SwipyCellConstants.durationLowLimit
         var horizontalVelocity = velocity.x
         
         if horizontalVelocity < -width {
@@ -254,7 +254,7 @@ open class SwipyCell: UITableViewCell, SwipyCellTriggerPointEditable {
             horizontalVelocity = width
         }
         
-        return TimeInterval(Constants.durationHighLimit + Constants.durationLowLimit - fabs(Double(horizontalVelocity / width) * animationDurationDiff))
+        return TimeInterval(SwipyCellConstants.durationHighLimit + SwipyCellConstants.durationLowLimit - fabs(Double(horizontalVelocity / width) * animationDurationDiff))
     }
 
 // MARK: - State calculations

@@ -1,5 +1,5 @@
 //
-//  SwipyCellEnums.swift
+//  SwipyCellTypes.swift
 //  SwipyCell
 //
 //  Created by Moritz Sternemann on 20.01.16.
@@ -31,12 +31,12 @@ public struct SwipyCellTrigger {
         self.view = view
         self.block = block
     }
-    
+
     var mode: SwipyCellMode
     var color: UIColor
     var view: UIView
     var block: SwipyCellTriggerBlock?
-    
+
     func executeTriggerBlock(withSwipyCell cell: SwipyCell, state: SwipyCellState) {
         block?(cell, state, mode)
     }
@@ -45,11 +45,11 @@ public struct SwipyCellTrigger {
 public enum SwipyCellState: Hashable {
     case none
     case state(Int, SwipyCellDirection)
-    
+
     public var hashValue: Int {
         return self.toInt()
     }
-    
+
     static public func ==(lhs: SwipyCellState, rhs: SwipyCellState) -> Bool {
         return lhs.toInt() == rhs.toInt()
     }
@@ -66,7 +66,7 @@ public enum SwipyCellState: Hashable {
                 return -(stateNum + 1)
             }
         }
-        
+
         return 0
     }
 }
@@ -85,7 +85,7 @@ public enum SwipyCellDirection: UInt {
 
 protocol SwipyCellTriggerPointEditable: class {
     var triggerPoints: [CGFloat: SwipyCellState] { get set }
-    
+
     func setTriggerPoint(forState state: SwipyCellState, at point: CGFloat)
     func setTriggerPoint(forIndex index: Int, at point: CGFloat)
     func setTriggerPoints(_ points: [CGFloat: SwipyCellState])
@@ -95,7 +95,7 @@ protocol SwipyCellTriggerPointEditable: class {
     func clearTriggerPoints()
 }
 extension SwipyCellTriggerPointEditable {
-    
+
     public func setTriggerPoint(forState state: SwipyCellState, at point: CGFloat) {
         var p = fabs(point)
         if case .state(_, let direction) = state, direction == .right {
@@ -103,17 +103,17 @@ extension SwipyCellTriggerPointEditable {
         }
         triggerPoints[p] = state
     }
-    
+
     public func setTriggerPoint(forIndex index: Int, at point: CGFloat) {
         let p = fabs(point)
         triggerPoints[p] = SwipyCellState.state(index, .left)
         triggerPoints[-p] = SwipyCellState.state(index, .right)
     }
-    
+
     public func setTriggerPoints(_ points: [CGFloat: SwipyCellState]) {
         triggerPoints = points
     }
-    
+
     public func setTriggerPoints(_ points: [CGFloat: Int]) {
         triggerPoints = [:]
         _ = points.map { point, index in
@@ -122,7 +122,7 @@ extension SwipyCellTriggerPointEditable {
             triggerPoints[-p] = SwipyCellState.state(index, .right)
         }
     }
-    
+
     public func setTriggerPoints(points: [CGFloat]) {
         triggerPoints = [:]
         for (index, point) in points.enumerated() {
@@ -131,11 +131,11 @@ extension SwipyCellTriggerPointEditable {
             triggerPoints[-p] = SwipyCellState.state(index, .right)
         }
     }
-    
+
     public func getTriggerPoints() -> [CGFloat: SwipyCellState] {
         return triggerPoints
     }
-    
+
     public func clearTriggerPoints() {
         triggerPoints = [:]
     }
@@ -143,19 +143,19 @@ extension SwipyCellTriggerPointEditable {
 
 public class SwipyCellConfig: SwipyCellTriggerPointEditable {
     static let shared = SwipyCellConfig()
-    
+
     internal var triggerPoints: [CGFloat: SwipyCellState]
     var swipeViewPadding: CGFloat
     var shouldAnimateSwipeViews: Bool
     var defaultSwipeViewColor: UIColor
-    
+
     init() {
         triggerPoints = [:]
         triggerPoints[Defaults.stop1] = .state(0, .left)
         triggerPoints[Defaults.stop2] = .state(1, .left)
         triggerPoints[-Defaults.stop1] = .state(0, .right)
         triggerPoints[-Defaults.stop2] = .state(1, .right)
-        
+
         swipeViewPadding = Defaults.swipeViewPadding
         shouldAnimateSwipeViews = Defaults.shouldAnimateSwipeViews
         defaultSwipeViewColor = Defaults.defaultSwipeViewColor
