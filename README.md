@@ -29,7 +29,7 @@ $ gem install cocoapods
 ```
 To integrate SwipyCell into your project using CocoaPods, add it to your `Podfile`:
 ```
-pod 'SwipyCell', '~> 3.0'
+pod 'SwipyCell', '~> 3.1'
 ```
 Then run the following command:
 ```
@@ -47,7 +47,7 @@ $ brew install carthage
 
 To integrate SwipyCell into your project using Carthage, add it to your `Cartfile`:
 ```
-github "moritzsternemann/SwipyCell" >= 3.0
+github "moritzsternemann/SwipyCell" >= 3.1
 ```
 
 ### Manual
@@ -97,7 +97,7 @@ override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexP
     cell.addSwipeTrigger(forState: .state(1, .right), withMode: .toggle, swipeView: listView, swipeColor: brownColor, completion: { cell, state, mode in
         print("Did swipe \"List\" cell")
     })
-        
+
     return cell
 }
 ```
