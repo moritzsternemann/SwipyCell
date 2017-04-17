@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Hints</key>
+    <array>
+        <dict>
+            <key>Content</key>
+            <string>The different modes are `SwipyCellMode.exit` and `.toggle`. The states are used like this: `.state(index, .side)`.</string>
+        </dict>
+        <dict>
+            <key>Content</key>
+            <string>The goal is to use every mode and trigger two states on each side at least once on a single table cell.</string>
+        </dict>
+    </array>
+</dict>
+</plist>
