@@ -142,12 +142,12 @@ extension SwipyCellTriggerPointEditable {
 }
 
 public class SwipyCellConfig: SwipyCellTriggerPointEditable {
-    static let shared = SwipyCellConfig()
+    public static let shared = SwipyCellConfig()
 
     internal var triggerPoints: [CGFloat: SwipyCellState]
-    var swipeViewPadding: CGFloat
-    var shouldAnimateSwipeViews: Bool
-    var defaultSwipeViewColor: UIColor
+    public var swipeViewPadding: CGFloat
+    public var shouldAnimateSwipeViews: Bool
+    public var defaultSwipeViewColor: UIColor
 
     init() {
         triggerPoints = [:]
