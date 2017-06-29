@@ -32,10 +32,10 @@ public struct SwipyCellTrigger {
         self.block = block
     }
 
-    var mode: SwipyCellMode
-    var color: UIColor
-    var view: UIView
-    var block: SwipyCellTriggerBlock?
+    public var mode: SwipyCellMode
+    public var color: UIColor
+    public var view: UIView
+    public var block: SwipyCellTriggerBlock?
 
     func executeTriggerBlock(withSwipyCell cell: SwipyCell, state: SwipyCellState) {
         block?(cell, state, mode)
