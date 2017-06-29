@@ -20,8 +20,8 @@ public typealias SwipyCellTriggerBlock = (SwipyCell, SwipyCellTrigger, SwipyCell
 
 public protocol SwipyCellDelegate {
     func swipyCellDidStartSwiping(_ cell: SwipyCell)
-    func swipyCellDidFinishSwiping(_ cell: SwipyCell)
-    func swipyCell(_ cell: SwipyCell, didSwipeWithPercentage percentage: CGFloat)
+    func swipyCellDidFinishSwiping(_ cell: SwipyCell, atState state: SwipyCellState, triggerActivated activated: Bool)
+    func swipyCell(_ cell: SwipyCell, didSwipeWithPercentage percentage: CGFloat, currentState state: SwipyCellState, triggerActivated activated: Bool)
 }
 
 public class SwipyCellTrigger {

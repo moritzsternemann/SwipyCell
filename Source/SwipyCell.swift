@@ -173,6 +173,9 @@ open class SwipyCell: UITableViewCell, SwipyCellTriggerPointEditable {
         let animationDuration = viewAnimationDuration(withVelocity: velocity)
         direction = swipeDirection(withPercentage: percentage)
         
+        let cellState = swipeState(withPercentage: percentage)
+        let stateTriggerHit = triggerHit(withPercentage: percentage)
+        
         if state == .began || state == .changed {
             isDragging = true
             
@@ -183,28 +186,26 @@ open class SwipyCell: UITableViewCell, SwipyCellTriggerPointEditable {
             animate(withOffset: contentScreenshotView?.frame.minX ?? 0)
             gesture.setTranslation(.zero, in: self)
             
-            delegate?.swipyCell(self, didSwipeWithPercentage: percentage)
+            delegate?.swipyCell(self, didSwipeWithPercentage: percentage, currentState: cellState, triggerActivated: stateTriggerHit)
         } else if state == .ended || state == .cancelled {
             isDragging = false
             
-            let cellState = swipeState(withPercentage: percentage)
             activeView = swipeView(withSwipeState: cellState)
             currentPercentage = percentage
             
             let cellMode = triggers[cellState]?.mode ?? .none
-            let hit = triggerHit(withPercentage: percentage)
             
-            if hit && cellMode == .exit && direction != .center {
+            if stateTriggerHit && cellMode == .exit && direction != .center {
                 move(withDuration: animationDuration, inDirection: direction)
             } else {
                 swipeToOrigin {
-                    if hit {
+                    if stateTriggerHit {
                         self.executeTriggerBlock()
                     }
                 }
             }
             
-            delegate?.swipyCellDidFinishSwiping(self)
+            delegate?.swipyCellDidFinishSwiping(self, atState: cellState, triggerActivated: stateTriggerHit)
         }
     }
     

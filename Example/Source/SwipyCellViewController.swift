@@ -189,13 +189,13 @@ class SwipyCellViewController: UITableViewController, SwipyCellDelegate {
     }
     
     // When the user ends swiping the cell this method is called
-    func swipyCellDidFinishSwiping(_ cell: SwipyCell) {
-        
+    func swipyCellDidFinishSwiping(_ cell: SwipyCell, atState state: SwipyCellState, triggerActivated activated: Bool) {
+        print("swipe finished - activated: \(activated), state: \(state)")
     }
     
     // When the user is dragging, this method is called with the percentage from the border
-    func swipyCell(_ cell: SwipyCell, didSwipeWithPercentage percentage: CGFloat) {
-        
+    func swipyCell(_ cell: SwipyCell, didSwipeWithPercentage percentage: CGFloat, currentState state: SwipyCellState, triggerActivated activated: Bool) {
+        print("swipe - percentage: \(percentage), activated: \(activated), state: \(state)")
     }
     
     // MARK: - Utils

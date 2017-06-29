@@ -135,10 +135,10 @@ SwipyCell provides three delegate methods in order to track the users behaviors.
 func swipyCellDidStartSwiping(_ cell: SwipyCell)
 
 // When the user ends swiping the cell this method is called
-func swipyCellDidFinishSwiping(_ cell: SwipyCell)
+func swipyCellDidFinishSwiping(_ cell: SwipyCell, atState state: SwipyCellState, triggerActivated activated: Bool)
 
 // When the user is dragging, this method is called with the percentage from the border
-func swipyCell(_ cell: SwipyCell, didSwipeWithPercentage percentage: CGFloat)
+func swipyCell(_ cell: SwipyCell, didSwipeWithPercentage percentage: CGFloat, currentState state: SwipyCellState, triggerActivated activated: Bool)
 ```
 
 
