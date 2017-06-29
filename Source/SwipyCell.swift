@@ -366,7 +366,6 @@ open class SwipyCell: UITableViewCell, SwipyCellTriggerPointEditable {
         let percentage = swipePercentage(withOffset: offset, relativeToWidth: bounds.width)
         let state = swipeState(withPercentage: percentage)
         let view = swipeView(withSwipeState: state)
-        print(percentage, state)
         
         if let view = view {
             setView(ofSlidingView: view)
