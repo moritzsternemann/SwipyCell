@@ -82,19 +82,19 @@ override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexP
     cell.textLabel?.text = "Switch Mode Cell"
     cell.detailTextLabel?.text = "Swipe to switch"
 
-	cell.addSwipeTrigger(forState: .state(0, .left), withMode: .toggle, swipeView: checkView, swipeColor: greenColor, completion: { cell, state, mode in
+	cell.addSwipeTrigger(forState: .state(0, .left), withMode: .toggle, swipeView: checkView, swipeColor: greenColor, completion: { cell, trigger, state, mode in
         print("Did swipe \"Checkmark\" cell")
     })
 
-    cell.addSwipeTrigger(forState: .state(1, .left), withMode: .toggle, swipeView: crossView, swipeColor: redColor, completion: { cell, state, mode in
+    cell.addSwipeTrigger(forState: .state(1, .left), withMode: .toggle, swipeView: crossView, swipeColor: redColor, completion: { cell, trigger, state, mode in
         print("Did swipe \"Cross\" cell")
     })
 
-    cell.addSwipeTrigger(forState: .state(0, .right), withMode: .toggle, swipeView: clockView, swipeColor: yellowColor, completion: { cell, state, mode in
+    cell.addSwipeTrigger(forState: .state(0, .right), withMode: .toggle, swipeView: clockView, swipeColor: yellowColor, completion: { cell, trigger, state, mode in
         print("Did swipe \"Clock\" cell")
     })
 
-    cell.addSwipeTrigger(forState: .state(1, .right), withMode: .toggle, swipeView: listView, swipeColor: brownColor, completion: { cell, state, mode in
+    cell.addSwipeTrigger(forState: .state(1, .right), withMode: .toggle, swipeView: listView, swipeColor: brownColor, completion: { cell, trigger, state, mode in
         print("Did swipe \"List\" cell")
     })
 
@@ -114,13 +114,13 @@ SwipyCellMode as shown above.
 ### SwipyCellTriggerBlock
 SwipyCellTriggerBlock is a typealias for
 ```
-(SwipyCell, SwipyCellState, SwipyCellMode) -> Void
+(SwipyCell, SwipyCellTrigger, SwipyCellState, SwipyCellMode) -> Void
 ```
 
 ### Add swipe triggers to cells
 Adding swipe triggers to cells is easy using this method:
 ```swift
-func addSwipeTrigger(forState: SwipyCellState, withMode: SwipyCellMode, swipeView: UIView, swipeColor: UIColor, completion:SwipyCellTriggerBlock)
+func addSwipeTrigger(forState: SwipyCellState, withMode: SwipyCellMode, swipeView: UIView, swipeColor: UIColor, completion: SwipyCellTriggerBlock)
 ```
 - `forState` at which the trigger should activate
 - `withMode` for the trigger

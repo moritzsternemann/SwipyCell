@@ -16,7 +16,7 @@ fileprivate struct Defaults {
     static let defaultSwipeViewColor        = UIColor.white
 }
 
-public typealias SwipyCellTriggerBlock = (SwipyCell, SwipyCellState, SwipyCellMode) -> Void
+public typealias SwipyCellTriggerBlock = (SwipyCell, SwipyCellTrigger, SwipyCellState, SwipyCellMode) -> Void
 
 public protocol SwipyCellDelegate {
     func swipyCellDidStartSwiping(_ cell: SwipyCell)
@@ -24,7 +24,7 @@ public protocol SwipyCellDelegate {
     func swipyCell(_ cell: SwipyCell, didSwipeWithPercentage percentage: CGFloat)
 }
 
-public struct SwipyCellTrigger {
+public class SwipyCellTrigger {
     init(mode: SwipyCellMode, color: UIColor, view: UIView, block: SwipyCellTriggerBlock?) {
         self.mode = mode
         self.color = color
@@ -38,7 +38,7 @@ public struct SwipyCellTrigger {
     public var block: SwipyCellTriggerBlock?
 
     func executeTriggerBlock(withSwipyCell cell: SwipyCell, state: SwipyCellState) {
-        block?(cell, state, mode)
+        block?(cell, self, state, mode)
     }
 }
 

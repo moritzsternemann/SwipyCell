@@ -42,7 +42,7 @@ open class SwipyCell: UITableViewCell, SwipyCellTriggerPointEditable {
     var slidingView: UIView!
     var activeView: UIView?
     
-    var triggers: [SwipyCellState: SwipyCellTrigger] = [:] {
+    fileprivate(set) public var triggers: [SwipyCellState: SwipyCellTrigger] = [:] {
         didSet { updateTriggerDirections() }
     }
     var triggerPoints: [CGFloat: SwipyCellState] = [:] {
