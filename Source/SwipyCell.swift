@@ -113,6 +113,8 @@ open class SwipyCell: UITableViewCell, SwipyCellTriggerPointEditable {
         addSubview(contentScreenshotView!)
     }
     
+// MARK: - Public Interface
+    
     public func addSwipeTrigger(forState state: SwipyCellState, withMode mode: SwipyCellMode, swipeView view: UIView, swipeColor color: UIColor, completion block: SwipyCellTriggerBlock?) {
         triggers[state] = SwipyCellTrigger(mode: mode, color: color, view: view, block: block)
     }
