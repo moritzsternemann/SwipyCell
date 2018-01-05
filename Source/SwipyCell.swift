@@ -158,7 +158,7 @@ open class SwipyCell: UITableViewCell, SwipyCellTriggerPointEditable {
 
 // MARK: - Gesture Recognition
     
-    func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
+    @objc func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
         if shouldDrag == false || isExited == true {
             return
         }
