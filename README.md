@@ -29,7 +29,7 @@ $ gem install cocoapods
 ```
 To integrate SwipyCell into your project using CocoaPods, add it to your `Podfile`:
 ```
-pod 'SwipyCell', '~> 3.2'
+pod 'SwipyCell', '~> 3.3'
 ```
 Then run the following command:
 ```
@@ -47,7 +47,7 @@ $ brew install carthage
 
 To integrate SwipyCell into your project using Carthage, add it to your `Cartfile`:
 ```
-github "moritzsternemann/SwipyCell" >= 3.2
+github "moritzsternemann/SwipyCell" >= 3.3
 ```
 
 ### Manual
