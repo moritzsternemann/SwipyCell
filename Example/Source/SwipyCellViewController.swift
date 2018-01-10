@@ -200,7 +200,7 @@ class SwipyCellViewController: UITableViewController, SwipyCellDelegate {
     
     // MARK: - Utils
     
-    func reload() {
+    @objc func reload() {
         numberItems = self.initialNumberItems
         tableView.reloadSections(IndexSet(integer: 0), with: .fade)
     }
