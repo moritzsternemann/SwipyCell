@@ -83,7 +83,7 @@ public enum SwipyCellDirection: UInt {
     case right
 }
 
-protocol SwipyCellTriggerPointEditable: class {
+public protocol SwipyCellTriggerPointEditable: class {
     var triggerPoints: [CGFloat: SwipyCellState] { get set }
 
     func setTriggerPoint(forState state: SwipyCellState, at point: CGFloat)
@@ -97,7 +97,7 @@ protocol SwipyCellTriggerPointEditable: class {
 extension SwipyCellTriggerPointEditable {
 
     public func setTriggerPoint(forState state: SwipyCellState, at point: CGFloat) {
-        var p = fabs(point)
+        var p = abs(point)
         if case .state(_, let direction) = state, direction == .right {
             p = -p
         }
@@ -105,7 +105,7 @@ extension SwipyCellTriggerPointEditable {
     }
 
     public func setTriggerPoint(forIndex index: Int, at point: CGFloat) {
-        let p = fabs(point)
+        let p = abs(point)
         triggerPoints[p] = SwipyCellState.state(index, .left)
         triggerPoints[-p] = SwipyCellState.state(index, .right)
     }
@@ -117,7 +117,7 @@ extension SwipyCellTriggerPointEditable {
     public func setTriggerPoints(_ points: [CGFloat: Int]) {
         triggerPoints = [:]
         _ = points.map { point, index in
-            let p = fabs(point)
+            let p = abs(point)
             triggerPoints[p] = SwipyCellState.state(index, .left)
             triggerPoints[-p] = SwipyCellState.state(index, .right)
         }
@@ -126,7 +126,7 @@ extension SwipyCellTriggerPointEditable {
     public func setTriggerPoints(points: [CGFloat]) {
         triggerPoints = [:]
         for (index, point) in points.enumerated() {
-            let p = fabs(point)
+            let p = abs(point)
             triggerPoints[p] = SwipyCellState.state(index, .left)
             triggerPoints[-p] = SwipyCellState.state(index, .right)
         }
@@ -144,7 +144,7 @@ extension SwipyCellTriggerPointEditable {
 public class SwipyCellConfig: SwipyCellTriggerPointEditable {
     public static let shared = SwipyCellConfig()
 
-    internal var triggerPoints: [CGFloat: SwipyCellState]
+    public var triggerPoints: [CGFloat: SwipyCellState]
     public var swipeViewPadding: CGFloat
     public var shouldAnimateSwipeViews: Bool
     public var defaultSwipeViewColor: UIColor
