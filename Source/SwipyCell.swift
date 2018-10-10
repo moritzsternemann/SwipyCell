@@ -45,7 +45,7 @@ open class SwipyCell: UITableViewCell, SwipyCellTriggerPointEditable {
     fileprivate(set) public var triggers: [SwipyCellState: SwipyCellTrigger] = [:] {
         didSet { updateTriggerDirections() }
     }
-    var triggerPoints: [CGFloat: SwipyCellState] = [:] {
+    public var triggerPoints: [CGFloat: SwipyCellState] = [:] {
         didSet { updateFirstTriggerPoints() }
     }
     var triggerDirections: Set<SwipyCellDirection> = []
@@ -55,7 +55,7 @@ open class SwipyCell: UITableViewCell, SwipyCellTriggerPointEditable {
     
 // MARK: - Initialization
     
-    override public init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         initializer()
     }
@@ -216,7 +216,7 @@ open class SwipyCell: UITableViewCell, SwipyCellTriggerPointEditable {
         
         let point = gesture.velocity(in: self)
         
-        if fabs(point.x) > fabs(point.y) {
+        if abs(point.x) > abs(point.y) {
             // if there are no states for direction (point.x > or < 0) return false
             if (point.x > 0 && !triggerDirections.contains(.left))
                 || (point.x < 0 && !triggerDirections.contains(.right)) {
@@ -336,7 +336,7 @@ open class SwipyCell: UITableViewCell, SwipyCellTriggerPointEditable {
         if percentage >= 0 && percentage < firstLeftTrigger {
             alpha = percentage / firstLeftTrigger
         } else if percentage < 0 && percentage > firstRightTrigger {
-            alpha = fabs(percentage / fabs(firstRightTrigger))
+            alpha = abs(percentage / abs(firstRightTrigger))
         }
         
         return alpha
