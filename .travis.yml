@@ -2,8 +2,8 @@ language: objective-c
 
 xcode_project: SwipyCell.xcodeproj
 xcode_scheme: SwipyCell
-osx_image: xcode10
-xcode_sdk: iphonesimulator12.0
+osx_image: xcode11
+xcode_sdk: iphonesimulator13.0
 
 branches:
   except:

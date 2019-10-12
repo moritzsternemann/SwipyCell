@@ -47,7 +47,7 @@ $ brew install carthage
 
 To integrate SwipyCell into your project using Carthage, add it to your `Cartfile`:
 ```
-github "moritzsternemann/SwipyCell" >= 3.3
+github "moritzsternemann/SwipyCell" >= 4.0
 ```
 
 ### Manual
