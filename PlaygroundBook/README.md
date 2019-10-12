@@ -4,7 +4,7 @@
 
 The purpose of this Playground book is to teach people the basics of using SwipyCell.
 
-<p align="center"><img src="https://raw.githubusercontent.com/moritzsternemann/SwipyCell/master/github-assets/swipycellbook.png?raw=true" width="75%"/></p>
+<p align="center"><img src="../.github/images/swipycellbook.png" width="75%"/></p>
 
 ### Usage
 You can download the playground book bundle including the latest version of SwipyCell from the [releases page of this repository](https://github.com/moritzsternemann/SwipyCell/releases).
