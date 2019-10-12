@@ -46,15 +46,15 @@ public enum SwipyCellState: Hashable {
     case none
     case state(Int, SwipyCellDirection)
 
-    public var hashValue: Int {
-        return self.toInt()
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(integerRepresentation)
     }
 
     static public func ==(lhs: SwipyCellState, rhs: SwipyCellState) -> Bool {
-        return lhs.toInt() == rhs.toInt()
+        return lhs.integerRepresentation == rhs.integerRepresentation
     }
 
-    private func toInt() -> Int {
+    private var integerRepresentation: Int {
         switch self {
         case .none:
             return 0
