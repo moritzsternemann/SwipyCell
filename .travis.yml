@@ -2,8 +2,8 @@ language: objective-c
 
 xcode_project: SwipyCell.xcodeproj
 xcode_scheme: SwipyCell
-osx_image: xcode10
-xcode_sdk: iphonesimulator12.0
+osx_image: xcode11.1
+xcode_sdk: iphonesimulator13.1
 
 branches:
   except:
@@ -11,7 +11,7 @@ branches:
 
 before_install:
   - gem update cocoapods
-  - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
+  - gem install xcpretty --quiet
 
 script:
 - xcodebuild -project SwipyCell.xcodeproj -scheme SwipyCell -sdk iphonesimulator clean build | xcpretty

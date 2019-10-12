@@ -1,25 +1,25 @@
 SwipyCell
 ---------
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-[![Swift 4.2](https://img.shields.io/badge/Swift-4.2-orange.svg?style=flat)](https://developer.apple.com/swift/)
+[![Swift 4.2](https://img.shields.io/badge/Swift-5.1-orange.svg?style=flat)](https://developer.apple.com/swift/)
 [![Build Status](https://travis-ci.org/moritzsternemann/SwipyCell.svg)](https://travis-ci.org/moritzsternemann/SwipyCell)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/SwipyCell.svg)](https://github.com/moritzsternemann/SwipyCell)
 [![Platform](https://img.shields.io/cocoapods/p/SwipyCell.svg)](https://github.com/moritzsternemann/SwipyCell)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/moritzsternemann/SwipyCell/master/LICENSE)
-[![Twitter](https://img.shields.io/badge/twitter-@iMoritzS-blue.svg?style=flat)](https://twitter.com/iMoritzS)
+[![Twitter](https://img.shields.io/badge/twitter-@strnmn-blue.svg?style=flat)](https://twitter.com/strnmn)
 
 *Swipeable UITableViewCell inspired by the popular [Mailbox App](http://mailboxapp.com), implemented in [Swift](https://github.com/apple/swift).*
 
-<p align="center"><img src="https://raw.githubusercontent.com/moritzsternemann/SwipyCell/master/github-assets/swipycell-hero.png?raw=true" width="50%"/></p>
+<p align="center"><img src=".github/images/swipycell-hero.jpg" width="50%"/></p>
 
 ## Preview
 ### Exit Mode
 The `.exit` mode is the original behavior, known from the Mailbox app.
-<p align="center"><img src="https://raw.githubusercontent.com/moritzsternemann/SwipyCell/master/github-assets/swipycell-exit.gif?raw=true" width="50%"/></p>
+<p align="center"><img src=".github/images/swipycell-exit.gif" width="50%"/></p>
 
 ### Toggle Mode
 The `.toggle` is another behavior where the cell will bounce back after swiping it.
-<p align="center"><img src="https://raw.githubusercontent.com/moritzsternemann/SwipyCell/master/github-assets/swipycell-switch.gif?raw=true" width="50%"/></p>
+<p align="center"><img src=".github/images/swipycell-switch.gif" width="50%"/></p>
 
 ## Installation
 ### CocoaPods
@@ -47,7 +47,7 @@ $ brew install carthage
 
 To integrate SwipyCell into your project using Carthage, add it to your `Cartfile`:
 ```
-github "moritzsternemann/SwipyCell" >= 3.3
+github "moritzsternemann/SwipyCell" >= 4.0
 ```
 
 ### Manual
