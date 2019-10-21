@@ -11,16 +11,13 @@ SwipyCell
 *Swipeable UITableViewCell inspired by the popular [Mailbox App](http://mailboxapp.com), implemented in [Swift](https://github.com/apple/swift).*
 
 <p align="center"><img src=".github/images/swipycell-hero.jpg" width="50%"/></p>
-
 ## Preview
 ### Exit Mode
 The `.exit` mode is the original behavior, known from the Mailbox app.
 <p align="center"><img src=".github/images/swipycell-exit.gif" width="50%"/></p>
-
 ### Toggle Mode
 The `.toggle` is another behavior where the cell will bounce back after swiping it.
 <p align="center"><img src=".github/images/swipycell-switch.gif" width="50%"/></p>
-
 ## Installation
 ### CocoaPods
 [CocoaPods](https://cocoapods.org) is a dependency manager for Cocoa projects.
@@ -60,7 +57,7 @@ A complete example is available in the [Example](https://github.com/moritzsterne
 The following code is a very basic example:
 ```swift
 override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-	let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SwipyCell
+    let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SwipyCell
     cell.selectionStyle = .gray
     cell.contentView.backgroundColor = UIColor.white
 
@@ -82,7 +79,7 @@ override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexP
     cell.textLabel?.text = "Switch Mode Cell"
     cell.detailTextLabel?.text = "Swipe to switch"
 
-	cell.addSwipeTrigger(forState: .state(0, .left), withMode: .toggle, swipeView: checkView, swipeColor: greenColor, completion: { cell, trigger, state, mode in
+    cell.addSwipeTrigger(forState: .state(0, .left), withMode: .toggle, swipeView: checkView, swipeColor: greenColor, completion: { cell, trigger, state, mode in
         print("Did swipe \"Checkmark\" cell")
     })
 
@@ -201,7 +198,7 @@ var defaultSwipeViewColor: UIColor
 You can animate the cell back to it's default position when using `.exit` mode using the `swipeToOrigin(_:)` method. This could be useful if your app asks the user for confirmation and the user want's to cancel the action.
 ```swift
 cell.swipeToOrigin {
-	print("Swiped back")
+    print("Swiped back")
 }
 ```
 
