@@ -11,15 +11,23 @@ SwipyCell
 *Swipeable UITableViewCell inspired by the popular [Mailbox App](http://mailboxapp.com), implemented in [Swift](https://github.com/apple/swift).*
 
 <p align="center"><img src=".github/images/swipycell-hero.jpg" width="50%"/></p>
+
 ## Preview
+
 ### Exit Mode
+
 The `.exit` mode is the original behavior, known from the Mailbox app.
 <p align="center"><img src=".github/images/swipycell-exit.gif" width="50%"/></p>
+
 ### Toggle Mode
+
 The `.toggle` is another behavior where the cell will bounce back after swiping it.
 <p align="center"><img src=".github/images/swipycell-switch.gif" width="50%"/></p>
+
 ## Installation
+
 ### CocoaPods
+
 [CocoaPods](https://cocoapods.org) is a dependency manager for Cocoa projects.
 ```
 $ gem install cocoapods
