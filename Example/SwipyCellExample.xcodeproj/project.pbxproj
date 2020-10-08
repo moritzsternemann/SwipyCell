@@ -3,35 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		8E5B0746235220F100E9F885 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E5B0744235220F000E9F885 /* LaunchScreen.storyboard */; };
 		8E5B0747235220F100E9F885 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E5B0745235220F000E9F885 /* Main.storyboard */; };
+		8E7131E1252F7BA0006CE02E /* SwipyCell in Frameworks */ = {isa = PBXBuildFile; productRef = 8E7131E0252F7BA0006CE02E /* SwipyCell */; };
 		8EB860BA1C98666B00DB393C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB860B11C98666B00DB393C /* AppDelegate.swift */; };
 		8EB860BF1C98666B00DB393C /* SwipyCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB860B91C98666B00DB393C /* SwipyCellViewController.swift */; };
 		8EB860CE1C98670000DB393C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EB860C71C98670000DB393C /* Assets.xcassets */; };
-		8EB860E31C9B00D300DB393C /* SwipyCell.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EB860C51C98669800DB393C /* SwipyCell.framework */; };
-		8EB860E41C9B00D300DB393C /* SwipyCell.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8EB860C51C98669800DB393C /* SwipyCell.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		8EB860C41C98669800DB393C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8EB860C01C98669800DB393C /* SwipyCell.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 8EB860821C98654900DB393C;
-			remoteInfo = SwipyCell;
-		};
-		8EB860E51C9B00D300DB393C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8EB860C01C98669800DB393C /* SwipyCell.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 8EB860811C98654900DB393C;
-			remoteInfo = SwipyCell;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		8EB860E71C9B00D300DB393C /* Embed Frameworks */ = {
@@ -40,7 +22,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				8EB860E41C9B00D300DB393C /* SwipyCell.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -50,10 +31,10 @@
 /* Begin PBXFileReference section */
 		8E5B0744235220F000E9F885 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8E5B0745235220F000E9F885 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		8E7131DE252F7B8D006CE02E /* SwipyCell */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SwipyCell; path = ..; sourceTree = "<group>"; };
 		8EB8609C1C98661E00DB393C /* SwipyCellExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwipyCellExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EB860B11C98666B00DB393C /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = SwipyCellExample/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		8EB860B91C98666B00DB393C /* SwipyCellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwipyCellViewController.swift; path = SwipyCellExample/SwipyCellViewController.swift; sourceTree = SOURCE_ROOT; };
-		8EB860C01C98669800DB393C /* SwipyCell.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwipyCell.xcodeproj; path = ../SwipyCell.xcodeproj; sourceTree = "<group>"; };
 		8EB860C71C98670000DB393C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = SwipyCellExample/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		8EB860CD1C98670000DB393C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = SwipyCellExample/Info.plist; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -63,19 +44,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8EB860E31C9B00D300DB393C /* SwipyCell.framework in Frameworks */,
+				8E7131E1252F7BA0006CE02E /* SwipyCell in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8E7131DF252F7BA0006CE02E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8EB860931C98661E00DB393C = {
 			isa = PBXGroup;
 			children = (
+				8E7131DE252F7B8D006CE02E /* SwipyCell */,
 				8EB8609E1C98661E00DB393C /* SwipyCellExample */,
 				8EB8609D1C98661E00DB393C /* Products */,
-				8EB860C01C98669800DB393C /* SwipyCell.xcodeproj */,
+				8E7131DF252F7BA0006CE02E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -100,14 +89,6 @@
 			path = SwipyCellExample;
 			sourceTree = "<group>";
 		};
-		8EB860C11C98669800DB393C /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				8EB860C51C98669800DB393C /* SwipyCell.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -123,9 +104,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				8EB860E61C9B00D300DB393C /* PBXTargetDependency */,
 			);
 			name = SwipyCellExample;
+			packageProductDependencies = (
+				8E7131E0252F7BA0006CE02E /* SwipyCell */,
+			);
 			productName = SwipyCellExample;
 			productReference = 8EB8609C1C98661E00DB393C /* SwipyCellExample.app */;
 			productType = "com.apple.product-type.application";
@@ -137,7 +120,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 1110;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Moritz Sternemann";
 				TargetAttributes = {
 					8EB8609B1C98661E00DB393C = {
@@ -157,28 +140,12 @@
 			mainGroup = 8EB860931C98661E00DB393C;
 			productRefGroup = 8EB8609D1C98661E00DB393C /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 8EB860C11C98669800DB393C /* Products */;
-					ProjectRef = 8EB860C01C98669800DB393C /* SwipyCell.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				8EB8609B1C98661E00DB393C /* SwipyCellExample */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		8EB860C51C98669800DB393C /* SwipyCell.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SwipyCell.framework;
-			remoteRef = 8EB860C41C98669800DB393C /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		8EB8609A1C98661E00DB393C /* Resources */ = {
@@ -205,14 +172,6 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		8EB860E61C9B00D300DB393C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SwipyCell;
-			targetProxy = 8EB860E51C9B00D300DB393C /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin XCBuildConfiguration section */
 		8EB860AC1C98661E00DB393C /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -236,6 +195,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -260,7 +220,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -290,6 +250,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -308,10 +269,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -323,8 +285,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/SwipyCellExample/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 4.0.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 4.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = de.moritzsternemann.SwipyCellExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -340,8 +305,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/SwipyCellExample/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 4.0.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 4.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = de.moritzsternemann.SwipyCellExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -371,6 +339,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8E7131E0252F7BA0006CE02E /* SwipyCell */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SwipyCell;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8EB860941C98661E00DB393C /* Project object */;
 }

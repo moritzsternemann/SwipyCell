@@ -1,7 +1,7 @@
 SwipyCell
 ---------
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-[![Swift 4.2](https://img.shields.io/badge/Swift-5.1-orange.svg?style=flat)](https://developer.apple.com/swift/)
+[![Swift 5.3](https://img.shields.io/badge/Swift-5.3-orange.svg?style=flat)](https://developer.apple.com/swift/)
 [![Build Status](https://travis-ci.org/moritzsternemann/SwipyCell.svg)](https://travis-ci.org/moritzsternemann/SwipyCell)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/SwipyCell.svg)](https://github.com/moritzsternemann/SwipyCell)
 [![Platform](https://img.shields.io/cocoapods/p/SwipyCell.svg)](https://github.com/moritzsternemann/SwipyCell)
@@ -26,38 +26,30 @@ The `.toggle` is another behavior where the cell will bounce back after swiping 
 
 ## Installation
 
-### CocoaPods
+### Swift Package Manager (recommended)
+[Swift Package Manger](https://github.com/apple/swift-package-manager) is Apples first party tool for managing distribution of source code, aimed at making it easy to share your code and reuse others’ code.
 
+To use the `SwipyCell` library in a SwiftPM project, add the following line to the dependencies in your `Package.swift` file:
+
+```swift
+.package(url: "https://github.com/moritzsternemann/SwipyCell", .upToNextMinor(from: "4.1.0")),
+```
+
+### CocoaPods
 [CocoaPods](https://cocoapods.org) is a dependency manager for Cocoa projects.
-```
-$ gem install cocoapods
-```
+
 To integrate SwipyCell into your project using CocoaPods, add it to your `Podfile`:
 ```
-pod 'SwipyCell', '~> 4.0'
-```
-Then run the following command:
-```
-$ pod install
+pod 'SwipyCell', '~> 4.1'
 ```
 
 ### Carthage
 [Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that automates the process of adding frameworks to your Cocoa application.
 
-Carthage can be installed with [Homebrew](http://brew.sh) using the following commands:
-```
-$ brew update
-$ brew install carthage
-```
-
 To integrate SwipyCell into your project using Carthage, add it to your `Cartfile`:
 ```
-github "moritzsternemann/SwipyCell" >= 4.0
+github "moritzsternemann/SwipyCell" >= 4.1
 ```
-
-### Manual
-Of course you can also add SwipyCell to your project by hand.
-To do this clone the repo to your computer and drag the `SwipyCell.xcodeproj` intp your project in Xcode. Then you have to add the `SwipyCell.framework` to your `Embedded Binaries` inside of your project's properties.
 
 ## Usage
 ### Example
@@ -209,6 +201,12 @@ cell.swipeToOrigin {
     print("Swiped back")
 }
 ```
+
+## Author
+I'm [Moritz Sternemann](https://github.com/moritzsternemann), a computer-science student at [Technical University of Munich](https://www.tum.de/en/).
+- Email: [opensource@moritzsternemann.de](mailto:opensource@moritzsternemann.de)
+- Twitter: [@strnmn](https://twitter.com/strnmn)
+- LinkedIn: [/in/moritzsternemann](https://www.linkedin.com/in/moritzsternemann)
 
 ## License
 SwipyCell is available under the MIT license. See LICENSE file for more info.

@@ -1,18 +1,13 @@
-language: objective-c
-
-xcode_project: SwipyCell.xcodeproj
-xcode_scheme: SwipyCell
-osx_image: xcode11.1
-xcode_sdk: iphonesimulator13.1
+language: swift
+osx_image: xcode12
 
 branches:
-  except:
-    - develop
+  only:
+    - main
 
 before_install:
   - gem update cocoapods
-  - gem install xcpretty --quiet
 
 script:
-- xcodebuild -project SwipyCell.xcodeproj -scheme SwipyCell -sdk iphonesimulator clean build | xcpretty
+- swift build -Xswiftc "-sdk" -Xswiftc "`xcrun --sdk iphonesimulator --show-sdk-path`" -Xswiftc "-target" -Xswiftc "x86_64-apple-ios14.0-simulator"
 - pod lib lint
