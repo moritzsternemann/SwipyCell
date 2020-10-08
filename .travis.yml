@@ -2,8 +2,8 @@ language: swift
 osx_image: xcode12
 
 branches:
-  except:
-    - develop
+  only:
+    - main
 
 before_install:
   - gem update cocoapods
